@@ -1,0 +1,967 @@
+Numpy Tutorial
+
+
+1. NumPy Arrays
+
+# Create a NumPy ndarray Object
+
+-NumPy is used to work with arrays. The array object in NumPy is called ndarray.
+-We can create a NumPy ndarray object by using the array() function.
+
+
+import numpy as np
+
+arr = np.array([1, 2, 3, 4, 5])
+
+print(arr)
+
+print(type(arr))
+
+
+-type(): This built-in Python function tells us the type of the object passed to it. Like in above code it shows that arr is numpy.ndarray type.
+
+
+# Dimensions in Arrays
+
+-A dimension in arrays is one level of array depth (nested arrays).
+-nested array: are arrays that have arrays as their elements.
+
+
+A. 0-D Arrays :
+-0-D arrays, or Scalars, are the elements in an array. Each value in an array is a 0-D array.
+
+import numpy as np
+
+arr = np.array(42)
+
+print(arr)
+
+
+B. 1-D Arrays :
+-An array that has 0-D arrays as its elements is called uni-dimensional or 1-D array.
+
+import numpy as np
+
+arr = np.array([1, 2, 3, 4, 5])
+
+print(arr)
+
+
+C. 2-D Arrays :
+-An array that has 1-D arrays as its elements is called a 2-D array.
+-These are often used to represent matrix or 2nd order tensors.
+-NumPy has a whole sub module dedicated towards matrix operations called numpy.mat
+
+import numpy as np
+
+arr = np.array([[1, 2, 3], [4, 5, 6]])
+
+print(arr)
+
+
+D. 3-D arrays :
+-An array that has 2-D arrays (matrices) as its elements is called 3-D array.
+
+import numpy as np
+
+arr = np.array([[[1, 2, 3], [4, 5, 6]], [[1, 2, 3], [4, 5, 6]]])
+
+print(arr)
+
+
+
+2. Numpy Arrays Attributes 
+
+
+print("Shape :" , arr3.shape)
+print("Size :" , arr3.size)
+print("Dimensions :" , arr3.ndim)
+print("D Type :", arr3.dtype)
+
+
+3. Arrays Initialization methods
+
+# 1. Zero Array
+
+zero_arr = np.zeros((2,3))
+print(zero_arr)
+
+
+# 2. One Array
+
+one_arr = np.ones((2,3))
+print(one_arr)
+
+
+# 3. Full Array
+
+full_arr = np.full((2,3) , 7)
+print(full_arr)
+
+
+# 4. Identity 
+
+print(np.eye(3))
+
+
+# 5. Empty 
+
+print(np.empty(3))
+
+
+# 6. Evenly Spaced Array
+
+print(np.arange(3))
+
+
+# 7. Specific no. of values
+
+print(np.linspace(1,10,4))
+
+
+# 8.Random valye array
+
+print(np.random.rand(3,2))     #float
+print(np.random.randint(1,10,(3,2)))   #int
+
+
+
+4.Arrays Indexing and Slicing
+
+
+# Array Indexing
+
+arr = np.array([1,2,3,4])
+arr1 = np.array([[1,2,3],[2,3,4]])
+print(arr)
+print(arr[2])
+
+print(arr1)
+print(arr1[1,2])
+
+
+-Array indexing is the same as accessing an array element.
+-You can access an array element by referring to its index number.
+-The indexes in NumPy arrays start with 0, meaning that the first element has index 0, and the second has index 1 etc.
+
+
+#Array Slicing
+
+-Slicing in python means taking elements from one given index to another given index.
+-We pass slice instead of index like this: [start:end].
+-We can also define the step, like this: [start:end:step].
+-If we don't pass start its considered 0
+-If we don't pass end its considered length of array in that dimension
+-If we don't pass step its considered 1
+
+arr = np.array([1,2,3,4])
+arr1 = np.array([[1,2,3],[2,3,4]])
+print(arr)
+print(arr[1:2])
+print(arr[:2])
+print(arr[1:])
+print(arr[2:2])
+
+print(arr1)
+print(arr1[1:2:1])
+print(arr1[:2])
+print(arr1[1:])
+print(arr1[2:2])
+
+
+
+5. Array Reshaping 
+
+-Reshaping means changing the shape of an array.
+-The shape of an array is the number of elements in each dimension.
+-By reshaping we can add or remove dimensions or change number of elements in each dimension.
+
+
+arr = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12])
+
+newarr = arr.reshape(4, 3)
+
+print(newarr)
+
+
+
+
+arr = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12])
+
+newarr = arr.reshape(2, 3, 2)
+
+print(newarr)
+
+
+
+5 .Array Flattening
+
+-Flattening array means converting a multidimensional array into a 1D array.
+
+arr = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12])
+
+newarr = arr.reshape(4, 3)
+
+print(newarr)
+
+print(newarr.flatten())
+
+
+
+
+6. Arrays Stacking and Splitting
+
+# Array Stacking
+
+arr1 =np.array([1,2,3])
+arr2 =np.array([5,6,7])
+
+print(np.vstack((arr1 , arr2)))
+print(np.hstack((arr1 , arr2)))
+
+# Array Splitting
+
+arr =np.array([[1,2,3],[5,6,7]])
+
+
+print(np.vsplit(arr , 2))
+print(np.hsplit(arr , 3))
+
+
+
+7. Mathematical Operations on Array and Multiple Arrays
+
+8.# NumPy Array Copy vs View
+
+#copy
+Make a copy, change the original array, and display both arrays:
+
+arr = np.array([1, 2, 3, 4, 5])
+x = arr.copy()
+arr[0] = 42
+
+print(arr)
+print(x)
+
+
+
+#view
+Make a view, change the original array, and display both arrays:
+
+arr = np.array([1, 2, 3, 4, 5])
+x = arr.view()
+arr[0] = 42
+
+print(arr)
+print(x)
+
+
+
+
+# NumPy Searching Arrays
+
+
+# where() method.
+
+arr = np.array([1, 2, 3, 4, 5, 4, 4])
+
+x = np.where(arr == 4)
+
+print(x)
+
+
+# searchsorted()
+
+arr = np.array([6, 7, 8, 9])
+
+x = np.searchsorted(arr, 7)
+
+print(x)
+
+
+arr = np.array([6, 7, 8, 9])
+
+x = np.searchsorted(arr, 7, side='right')
+
+print(x)
+
+
+
+
+# NumPy Sorting Arrays
+
+
+arr = np.array([3, 2, 0, 1])
+
+print(np.sort(arr))
+
+
+
+
+# Filter array
+
+
+arr = np.array([41, 42, 43, 44])
+
+filter_arr = arr > 42
+
+newarr = arr[filter_arr]
+
+print(filter_arr)
+print(newarr)
+
+
+
+# Type Conversion (astype)
+
+
+a = np.array([1, 2, 3])
+b = a.astype('float32')
+
+
+
+
+9. Ufuncs (Universal Functions)
+
+-Ufuncs are fast, built-in NumPy functions that operate element-wise on arrays.
+
+Types of Ufuncs:
+
+(A) Arithmetic Ufuncs
+np.add(a, b)
+np.subtract(a, b)
+np.multiply(a, b)
+np.divide(a, b)
+
+
+(B) Mathematical Ufuncs (VERY IMPORTANT)
+np.sqrt(a)     # √a
+np.exp(a)      # e^a
+np.log(a)      # ln(a)
+np.abs(a)      # |a|
+
+
+# Create Your Own ufunc
+
+-To create your own ufunc, you have to define a function, like you do with normal functions in Python, then you add it to your NumPy ufunc library with the frompyfunc() method.
+
+-The frompyfunc() method takes the following arguments:
+
+function - the name of the function.
+inputs - the number of input arguments (arrays).
+outputs - the number of output arrays.
+
+import numpy as np
+
+def myadd(x, y):
+  return x+y
+
+myadd = np.frompyfunc(myadd, 2, 1)
+
+print(myadd([1, 2, 3, 4], [5, 6, 7, 8]))
+
+
+
+#Check if a Function is a ufunc
+
+import numpy as np
+
+print(type(np.add))
+
+
+
+#Rounding Decimals
+
+There are primarily five ways of rounding off decimals in NumPy:
+
+truncation
+fix
+rounding
+floor
+ceil
+
+
+# Truncation & fix
+Remove the decimals, and return the float number closest to zero. Use the trunc() and fix() functions.
+
+import numpy as np
+
+arr = np.trunc([-3.1666, 3.6667])
+
+print(arr)
+
+import numpy as np
+
+arr = np.fix([-3.1666, 3.6667])
+
+print(arr)
+
+#Rounding
+The around() function increments preceding digit or decimal by 1 if >=5 else do nothing.
+E.g. round off to 1 decimal point, 3.16666 is 3.2
+
+
+import numpy as np
+
+arr = np.around(3.1666, 2)
+
+print(arr)
+
+
+#Floor
+The floor() function rounds off decimal to nearest lower integer.
+E.g. floor of 3.166 is 3.
+
+
+import numpy as np
+
+arr = np.floor([-3.1666, 3.6667])
+
+print(arr)
+
+#Ceil
+The ceil() function rounds off decimal to nearest upper integer.
+E.g. ceil of 3.166 is 4.
+
+import numpy as np
+
+arr = np.ceil([-3.1666, 3.6667])
+
+print(arr)
+
+
+
+
+# NumPy Logs
+
+
+#Log at Base 2
+Use the log2() function to perform log at the base 2.
+
+ExampleGet your own Python Server
+Find log at base 2 of all elements of following array:
+
+import numpy as np
+
+arr = np.arange(1, 10)
+
+print(np.log2(arr))
+
+
+
+#Log at Base 10
+Use the log10() function to perform log at the base 10.
+
+Example
+Find log at base 10 of all elements of following array:
+
+import numpy as np
+
+arr = np.arange(1, 10)
+
+print(np.log10(arr))
+
+
+#Natural Log, or Log at Base e
+Use the log() function to perform log at the base e.
+
+Example
+Find log at base e of all elements of following array:
+
+import numpy as np
+
+arr = np.arange(1, 10)
+
+print(np.log(arr))
+
+
+#Log at Any Base
+NumPy does not provide any function to take log at any base, so we can use the frompyfunc() function along with inbuilt function math.log() with two input parameters and one output parameter:
+
+Example
+from math import log
+import numpy as np
+
+nplog = np.frompyfunc(log, 2, 1)
+
+print(nplog(100, 15))
+
+
+
+# NumPy Summations
+
+
+#Summations
+What is the difference between summation and addition?
+
+Addition is done between two arguments whereas summation happens over n elements.
+
+ExampleGet your own Python Server
+Add the values in arr1 to the values in arr2:
+
+import numpy as np
+
+arr1 = np.array([1, 2, 3])
+arr2 = np.array([1, 2, 3])
+
+newarr = np.add(arr1, arr2)
+
+print(newarr)
+
+
+
+Sum the values in arr1 and the values in arr2:
+
+import numpy as np
+
+arr1 = np.array([1, 2, 3])
+arr2 = np.array([1, 2, 3])
+
+newarr = np.sum([arr1, arr2])
+
+print(newarr)
+
+
+
+#Summation Over an Axis
+If you specify axis=1, NumPy will sum the numbers in each array.
+
+Example
+Perform summation in the following array over 1st axis:
+
+import numpy as np
+
+arr1 = np.array([1, 2, 3])
+arr2 = np.array([1, 2, 3])
+
+newarr = np.sum([arr1, arr2], axis=1)
+
+print(newarr)
+
+
+
+#Cummulative Sum
+Cummulative sum means partially adding the elements in array.
+
+E.g. The partial sum of [1, 2, 3, 4] would be [1, 1+2, 1+2+3, 1+2+3+4] = [1, 3, 6, 10].
+
+Perfom partial sum with the cumsum() function.
+
+Example
+Perform cummulative summation in the following array:
+
+import numpy as np
+
+arr = np.array([1, 2, 3])
+
+newarr = np.cumsum(arr)
+
+print(newarr)
+
+
+
+# NumPy Products
+
+
+#Products
+To find the product of the elements in an array, use the prod() function.
+
+ExampleGet your own Python Server
+Find the product of the elements of this array:
+
+import numpy as np
+
+arr = np.array([1, 2, 3, 4])
+
+x = np.prod(arr)
+
+print(x)
+
+
+import numpy as np
+
+arr1 = np.array([1, 2, 3, 4])
+arr2 = np.array([5, 6, 7, 8])
+
+x = np.prod([arr1, arr2])
+
+print(x)
+
+
+#Product Over an Axis
+If you specify axis=1, NumPy will return the product of each array.
+
+Example
+Perform summation in the following array over 1st axis:
+
+import numpy as np
+
+arr1 = np.array([1, 2, 3, 4])
+arr2 = np.array([5, 6, 7, 8])
+
+newarr = np.prod([arr1, arr2], axis=1)
+
+print(newarr)
+
+
+#Cummulative Product
+Cummulative product means taking the product partially.
+
+E.g. The partial product of [1, 2, 3, 4] is [1, 1*2, 1*2*3, 1*2*3*4] = [1, 2, 6, 24]
+
+Perfom partial sum with the cumprod() function.
+
+Example
+Take cummulative product of all elements for following array:
+
+import numpy as np
+
+arr = np.array([5, 6, 7, 8])
+
+newarr = np.cumprod(arr)
+
+print(newarr)
+
+
+
+#NumPy Differences
+
+
+
+#Differences
+A discrete difference means subtracting two successive elements.
+
+E.g. for [1, 2, 3, 4], the discrete difference would be [2-1, 3-2, 4-3] = [1, 1, 1]
+
+To find the discrete difference, use the diff() function.
+
+ExampleGet your own Python Server
+Compute discrete difference of the following array:
+
+import numpy as np
+
+arr = np.array([10, 15, 25, 5])
+
+newarr = np.diff(arr)
+
+print(newarr)
+
+
+
+
+import numpy as np
+
+arr = np.array([10, 15, 25, 5])
+
+newarr = np.diff(arr, n=2)
+
+print(newarr)
+
+
+
+
+#NumPy LCM Lowest Common Multiple
+
+num1 = 4
+num2 = 6
+
+x = np.lcm(num1, num2)
+
+print(x)
+
+
+
+
+arr = np.array([3, 6, 9])
+
+x = np.lcm.reduce(arr)
+
+print(x)
+
+
+
+arr = np.arange(1, 11)
+
+x = np.lcm.reduce(arr)
+
+print(x)
+
+
+
+
+#NumPy GCD Greatest Common Divisor
+
+
+import numpy as np
+
+num1 = 6
+num2 = 9
+
+x = np.gcd(num1, num2)
+
+print(x)
+
+
+import numpy as np
+
+arr = np.array([20, 8, 32, 36, 16])
+
+x = np.gcd.reduce(arr)
+
+print(x)
+
+
+# NumPy Trigonometric Functions
+
+
+#Trigonometric Functions
+NumPy provides the ufuncs sin(), cos() and tan() that take values in radians and produce the corresponding sin, cos and tan values.
+
+ExampleGet your own Python Server
+Find sine value of PI/2:
+
+import numpy as np
+
+x = np.sin(np.pi/2)
+
+print(x)
+
+
+#Convert Degrees Into Radians
+By default all of the trigonometric functions take radians as parameters but we can convert radians to degrees and vice versa as well in NumPy.
+
+Note: radians values are pi/180 * degree_values.
+
+Example
+Convert all of the values in following array arr to radians:
+
+import numpy as np
+
+arr = np.array([90, 180, 270, 360])
+
+x = np.deg2rad(arr)
+
+print(x)
+
+
+#Radians to Degrees
+Example
+Convert all of the values in following array arr to degrees:
+
+import numpy as np
+
+arr = np.array([np.pi/2, np.pi, 1.5*np.pi, 2*np.pi])
+
+x = np.rad2deg(arr)
+
+print(x)
+
+
+
+#Finding Angles
+Finding angles from values of sine, cos, tan. E.g. sin, cos and tan inverse (arcsin, arccos, arctan).
+
+NumPy provides ufuncs arcsin(), arccos() and arctan() that produce radian values for corresponding sin, cos and tan values given.
+
+Example
+Find the angle of 1.0:
+
+import numpy as np
+
+x = np.arcsin(1.0)
+
+print(x)
+
+
+#Angles of Each Value in Arrays
+Example
+Find the angle for all of the sine values in the array
+
+import numpy as np
+
+arr = np.array([1, -1, 0.1])
+
+x = np.arcsin(arr)
+
+print(x)
+
+
+
+
+#Hypotenues
+Finding hypotenues using pythagoras theorem in NumPy.
+
+NumPy provides the hypot() function that takes the base and perpendicular values and produces hypotenues based on pythagoras theorem.
+
+Example
+Find the hypotenues for 4 base and 3 perpendicular:
+
+import numpy as np
+
+base = 3
+perp = 4
+
+x = np.hypot(base, perp)
+
+print(x)
+
+
+
+#NumPy Hyperbolic Functions
+
+
+#Hyperbolic Functions
+NumPy provides the ufuncs sinh(), cosh() and tanh() that take values in radians and produce the corresponding sinh, cosh and tanh values..
+
+ExampleGet your own Python Server
+Find sinh value of PI/2:
+
+import numpy as np
+
+x = np.sinh(np.pi/2)
+
+print(x)
+
+
+
+#Finding Angles
+Finding angles from values of hyperbolic sine, cos, tan. E.g. sinh, cosh and tanh inverse (arcsinh, arccosh, arctanh).
+
+Numpy provides ufuncs arcsinh(), arccosh() and arctanh() that produce radian values for corresponding sinh, cosh and tanh values given.
+
+Example
+Find the angle of 1.0:
+
+import numpy as np
+
+x = np.arcsinh(1.0)
+
+print(x)
+
+
+
+#Angles of Each Value in Arrays
+Example
+Find the angle for all of the tanh values in array:
+
+import numpy as np
+
+arr = np.array([0.1, 0.2, 0.5])
+
+x = np.arctanh(arr)
+
+print(x)
+
+
+
+# NumPy Set Operations
+
+
+#What is a Set
+A set in mathematics is a collection of unique elements.
+
+Sets are used for operations involving frequent intersection, union and difference operations.
+
+Create Sets in NumPy
+We can use NumPy's unique() method to find unique elements from any array. E.g. create a set array, but remember that the set arrays should only be 1-D arrays.
+
+ExampleGet your own Python Server
+Convert following array with repeated elements to a set:
+
+import numpy as np
+
+arr = np.array([1, 1, 1, 2, 3, 4, 5, 5, 6, 7])
+
+x = np.unique(arr)
+
+print(x)
+
+
+#Finding Union
+To find the unique values of two arrays, use the union1d() method.
+
+Example
+Find union of the following two set arrays:
+
+import numpy as np
+
+arr1 = np.array([1, 2, 3, 4])
+arr2 = np.array([3, 4, 5, 6])
+
+newarr = np.union1d(arr1, arr2)
+
+print(newarr)
+
+
+#Finding Intersection
+To find only the values that are present in both arrays, use the intersect1d() method.
+
+Example
+Find intersection of the following two set arrays:
+
+import numpy as np
+
+arr1 = np.array([1, 2, 3, 4])
+arr2 = np.array([3, 4, 5, 6])
+
+newarr = np.intersect1d(arr1, arr2, assume_unique=True)
+
+print(newarr)
+
+
+#Finding Difference
+To find only the values in the first set that is NOT present in the seconds set, use the setdiff1d() method.
+
+Example
+Find the difference of the set1 from set2:
+
+import numpy as np
+
+set1 = np.array([1, 2, 3, 4])
+set2 = np.array([3, 4, 5, 6])
+
+newarr = np.setdiff1d(set1, set2, assume_unique=True)
+
+print(newarr)
+
+
+#Finding Symmetric Difference
+To find only the values that are NOT present in BOTH sets, use the setxor1d() method.
+
+Example
+Find the symmetric difference of the set1 and set2:
+
+import numpy as np
+
+set1 = np.array([1, 2, 3, 4])
+set2 = np.array([3, 4, 5, 6])
+
+newarr = np.setxor1d(set1, set2, assume_unique=True)
+
+print(newarr)
+
+
+# Advanced Indexing Tricks
+
+You already know basics, but deeper includes:
+
+np.take()
+np.put()
+np.choose()
+
+
+#Fancy Functions You Might Use
+Sorting & Searching
+np.sort()
+np.argsort()
+np.unique()
+Statistics
+np.percentile()
+np.corrcoef()
+
+
+#File Handling (Important in real projects)
+np.save()
+np.load()
+np.savetxt()
+np.loadtxt()
