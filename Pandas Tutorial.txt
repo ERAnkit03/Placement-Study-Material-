@@ -1,0 +1,1659 @@
+Pandas Tutorial
+
+
+
+# Pandas Series
+
+
+
+#Creating a Pandas Series
+
+import pandas as pd
+
+data = [1, 2, 3, 4]
+ 
+ser = pd.Series(data)
+print(ser)
+
+print(ser[:5])  ...Position-based Indexing
+print(ser[16])  ...Label-based Indexing
+
+
+
+#Custom Index
+
+s = pd.Series([10, 20, 30], index=["a", "b", "c"])
+print(s)
+
+
+#Creating Series in Different Ways
+
+1. From List
+
+s = pd.Series([1, 2, 3])
+
+
+2. From Dictionary
+
+data = {"A": 10, "B": 20, "C": 30}
+s = pd.Series(data)
+print(s)
+
+
+3. Scalar Value
+
+s = pd.Series(100, index=["a", "b", "c"])
+
+Output:
+a    100
+b    100
+c    100
+
+
+# Operations
+
+
+import pandas as pd
+
+ser1 = pd.Series([1, 2, 3], index=['A', 'B', 'C'])
+ser2 = pd.Series([4, 5, 6], index=['A', 'B', 'C'])
+
+df_sum = ser1.add(ser2)
+print(df_sum)
+
+
+
+
+# Pandas DataFrame
+
+
+s = pd.DataFrame([1,2,3])
+print(s)
+
+
+#Creating DataFrame from dict of Numpy Array
+
+import numpy as np
+import pandas as pd
+
+data = { 'A': np.array([1, 4, 7]),
+         'B': np.array([2, 5, 8]),
+         'C': np.array([3, 6, 9]) }
+df = pd.DataFrame(data)
+print(df)
+
+
+#Creating a DataFrame from a List of Dictionaries  
+
+import pandas as pd
+data = [
+    {'name': 'Mike', 'degree': 'MBA', 'score': 90},
+    {'name': 'Dan', 'degree': 'BCA', 'score': 40},
+    {'name': 'Emilia', 'degree': 'M.Tech', 'score': 80},
+]
+df = pd.DataFrame(data)
+print(df)
+
+
+
+import pandas as pd
+
+data = {
+    "Name": ["Aman", "Riya", "Raj"],
+    "Age": [22, 21, 23],
+    "City": ["Pune", "Mumbai", "Delhi"]
+}
+
+df = pd.DataFrame(data)
+print(df)
+
+
+
+
+# Pandas - Data Handling
+
+
+
+#Pandas - Sorting
+
+
+
+
+import pandas as pd
+import numpy as np
+
+df = pd.DataFrame([2,5,4,3,7,1,8,6,9])
+print(df)
+
+#Sorting by Label
+
+print(df.sort_index())
+
+#Controlling the Order of Sorting
+
+print(df.sort_index(ascending=False))
+
+#Sort the Columns
+
+print(df.sort_index(axis=1))
+
+#Sorting by Actual Values
+
+#Sorting a Series Values
+
+
+panda_series = pd.Series([18, 95, 66, 12, 55, 0])
+print("Unsorted Pandas Series: \n", panda_series)
+
+panda_series_sorted = panda_series.sort_values(ascending=True)
+print("\nSorted Pandas Series: \n", panda_series_sorted)
+
+# Sorting a DataFrame Values
+
+unsorted_df = pd.DataFrame({'col1':[2,9,5,0],'col2':[1,3,2,4]})
+print("Original DataFrame:\n", unsorted_df)
+
+# Sort the DataFrame by values
+sorted_df = unsorted_df.sort_values(by='col1')
+print("\nOutput Sorted DataFrame:\n", sorted_df)
+
+#Sorting Value of the Multiple Columns
+
+unsorted_df = pd.DataFrame({'col1':[2,1,0,1],'col2':[1,3,4,2]})
+
+print("Original DataFrame:\n", unsorted_df)
+
+# Sort the DataFrame multiple columns by values
+sorted_df = unsorted_df.sort_values(by=['col1','col2'])
+print("\nOutput Sorted DataFrame:\n", sorted_df)
+
+
+#Choosing a Sorting Algorithm
+
+unsorted_df = pd.DataFrame({'col1':[2,5,0,1],'col2':[1,3,0,4]})
+print("Original DataFrame:\n", unsorted_df)
+
+# Sort the DataFrame 
+sorted_df = unsorted_df.sort_values(by='col1' ,kind='mergesort')
+print("\nOutput Sorted DataFrame:\n", sorted_df)
+
+
+
+
+# Pandas - Reindexing
+
+
+#Reindexing a Pandas Series - using reindex() method
+
+s = pd.Series([1,2,3] , index=["a", "b" , "c"])
+print(s)
+print(s.reindex(["e", "b", "f"]))
+
+
+#Reindexing a DataFrame - using reindex() method
+
+df =pd.DataFrame([1,2,3,4] , index=["a", "b" , "c", "d"])
+print(df)
+print(df.reindex(["e", "b", "f", "g"]))
+
+
+#Reindex to Align with Other Objects - reindex_like() method
+
+df1 = pd.DataFrame(np.random.randn(10,3),columns=['col1','col2','col3'])
+df2 = pd.DataFrame(np.random.randn(7,3),columns=['col1','col2','col3'])
+
+df1 = df1.reindex_like(df2)
+print(df1)
+
+
+#Filling While ReIndexing
+
+df1 = pd.DataFrame(np.random.randn(10,3),columns=['col1','col2','col3'])
+df2 = pd.DataFrame(np.random.randn(7,3),columns=['col1','col2','col3'])
+
+df1 = df1.reindex_like(df2)
+print(df1)
+# print(df2.reindex_like(df1, method='ffill'))
+
+
+
+#Limits on Filling While Reindexing
+print(df2.reindex_like(df1, method='ffill', limit=1))
+
+
+
+
+
+# Pandas - Iteration
+
+
+#Series Iteration
+
+s = pd.Series([10,20,30])
+
+for val in s:
+    print(val)
+
+
+#DataFrame Iteration
+
+df = pd.DataFrame({
+    "A":[1,2],
+    "B":[3,4]
+})
+
+for col in df:
+    print(col)
+
+
+#Methods to Iterate DataFrame  
+
+#1. items()
+
+for col, data in df.items():
+    print(col)
+    print(data)
+
+
+#2. iterrows()
+
+for i, row in df.iterrows():
+    print(i, row["A"], row["B"])
+
+
+#3. itertuples()
+
+for row in df.itertuples():
+    print(row.A, row.B)
+
+    
+
+# Pandas - Concatenation
+
+
+#Row-wise Concatenation (Default)
+
+import pandas as pd
+
+df1 = pd.DataFrame({"A":[1,2]})
+df2 = pd.DataFrame({"A":[3,4]})
+
+result = pd.concat([df1, df2])
+print(result)
+
+
+#Fix Index (ignore_index=True)
+
+result = pd.concat([df1, df2], ignore_index=True)
+print(result)
+
+#Column-wise Concatenation
+
+result = pd.concat([df1, df2], axis=1)
+print(result)
+
+#Using Keys (Label Data)
+
+result = pd.concat([df1, df2], keys=["first","second"])
+print(result)
+
+
+
+
+
+#Statistical Functions in pandas
+
+
+#1. pct_change() (Percentage Change)
+
+s = pd.Series([10, 20, 30])
+print(s.pct_change())
+
+#2. cov() (Covariance)
+
+s1 = pd.Series([1,2,3])
+s2 = pd.Series([2,4,6])
+
+print(s1.cov(s2))
+
+#3. corr() (Correlation)
+
+print(s1.corr(s2))
+
+#4. rank() (Ranking)
+
+s = pd.Series([100, 200, 150])
+print(s.rank())
+
+
+
+
+# Descriptive Statistics in pandas
+
+
+#1. Aggregation Functions (Single Summary Value)
+
+s = pd.Series([10,20,30,40])
+
+print(s.mean())   # 25
+print(s.max())    # 40
+
+#2. Cumulative Functions (Running Results)
+
+s = pd.Series([1,2,3])
+print(s.cumsum())
+
+#3. Boolean Functions (True/False)
+
+s = pd.Series([10,20,30])
+print(s.between(15,25))
+
+#4. Transformation Functions
+
+s = pd.Series([10,20,30])
+print(s.diff())
+
+#5. Index-related Functions
+
+s = pd.Series([10,20,10])
+print(s.value_counts())
+
+#6. Statistical Functions
+
+s = pd.Series([10,20,30])
+print(s.describe())
+
+
+
+
+
+
+# Pandas - Working with Text Data
+
+df = pd.DataFrame({
+    "name": [" Ankit ", "RAHUL", "sneha"],
+    "email": ["ankit@gmail.com", "rahul@yahoo.com", "sneha@outlook.com"]
+})
+
+
+#1. String Transformation (Change Text)
+
+df["name"].str.lower()     # convert to lowercase
+df["name"].str.upper()     # uppercase
+df["name"].str.replace("a","A")  # replace
+
+
+#2. String Trimming (Remove Extra Spaces)
+
+df["name"].str.strip()   # remove spaces both sides
+df["name"].str.lstrip()  # left side
+df["name"].str.rstrip()  # right side
+
+#3. Concatenation (Join Text)
+
+df["full"] = df["first"].str.cat(df["last"], sep=" ")
+
+#4. Padding (Adjust Length)
+
+df["num"].str.zfill(5)
+
+#5. Searching (Find Text)
+
+df["name"].str.contains("an")   # True/False
+df["name"].str.count("a")       # count letters
+df["name"].str.startswith("A")
+
+#6. Splitting (Break Text)
+
+df["email"].str.split("@")
+
+#7. Filtering (Check Conditions)
+
+df["name"].str.isalpha()   # only letters?
+df["num"].str.isdigit()    # only numbers?
+df["text"].str.len()       # length
+
+#8. Miscellaneous (Other Operations)
+
+df["name"].str.repeat(2)      # repeat text
+df["name"].str.slice(0,3)     # substring
+df["name"].str.endswith("t")  # check ending
+
+
+
+
+
+
+# Function Application in Pandas
+
+
+#1. pipe() → Table-wise (Whole DataFrame)
+
+
+import pandas as pd
+
+df = pd.DataFrame({"A":[1,2], "B":[3,4]})
+
+def add_2(x):
+    return x + 2
+
+df.pipe(add_2)
+
+
+#apply() → Row / Column-wise 
+
+
+#Column-wise (default)
+df.apply(lambda x: x.mean())
+
+#Row-wise
+df.apply(lambda x: x.sum(), axis=1)
+
+
+#3. map() → Element-wise
+
+df["A"].map(lambda x: x*10)
+
+
+
+
+
+# Options & Customization
+
+
+#1. get_option()
+
+import pandas as pd
+
+pd.get_option("display.max_rows")
+
+#2. set_option()
+
+pd.set_option("display.max_rows", 10)
+
+#3. reset_option()
+
+pd.reset_option("display.max_rows")
+
+#4. describe_option()
+
+pd.describe_option("display.max_rows")
+
+#5. option_context()
+
+with pd.option_context("display.max_rows", 5):
+    print(pd.get_option("display.max_rows"))
+
+print(pd.get_option("display.max_rows"))
+
+
+
+
+
+# Window Functions
+
+
+#Types of Window Functions
+
+
+#1. Rolling Window
+
+import pandas as pd
+
+s = pd.Series([1,2,3,4,5])
+
+print(s.rolling(3).mean())
+
+
+#2. Weighted Window
+
+s.rolling(3, win_type="triang").mean()
+
+
+#3. Expanding Window
+
+s.expanding().mean()
+
+#4. Exponential Window
+
+s.ewm(span=3).mean()
+
+
+
+
+# Pandas - Aggregations
+
+
+# agg() / aggregate()
+
+import pandas as pd
+
+df = pd.DataFrame({
+    "A":[1,2,3],
+    "B":[4,5,6]
+})
+
+df.agg(['sum','min'])
+
+
+
+# Different Functions per Column
+
+df.agg({
+    "A": ['sum','min'],
+    "B": ['max']
+})
+
+
+# Row-wise Aggregation
+
+df.agg('mean', axis=1)
+
+
+# Single Column Aggregation
+
+df["A"].agg('sum')
+
+# Custom Named Aggregation
+
+df.agg(
+    total_A=('A','sum'),
+    avg_B=('B','mean')
+)
+
+
+
+
+
+
+# Merging / Joining
+
+
+# Basic Merge
+
+import pandas as pd
+
+df1 = pd.DataFrame({"id":[1,2,3], "name":["A","B","C"]})
+df2 = pd.DataFrame({"id":[1,2,4], "marks":[90,80,70]})
+
+df1.merge(df2, on="id")
+
+
+# Types of Joins
+
+#Inner Join
+
+df1.merge(df2, on="id", how="inner")
+
+#Left Join
+
+df1.merge(df2, on="id", how="left")
+
+#Right Join
+
+df1.merge(df2, on="id", how="right")
+
+#Outer Join
+
+df1.merge(df2, on="id", how="outer")
+
+
+# Merge on Multiple Columns
+
+
+df1.merge(df2, on=["id","name"])
+
+
+# Different Column Names
+
+df1.merge(df2, left_on="id", right_on="user_id")
+
+# join() Method
+
+df1.join(df2, lsuffix="_left", rsuffix="_right")
+
+
+
+
+
+
+# MultiIndex
+import pandas as pd
+
+#1. from_arrays()
+
+arrays = [
+    ["BMW", "BMW", "Audi", "Audi"],
+    ["1", "2", "1", "2"]
+]
+
+index = pd.MultiIndex.from_arrays(arrays)
+print(index)
+
+
+#2. from_tuples()
+
+tuples = [("BMW", "1"), ("BMW", "2"), ("Audi", "1")]
+index = pd.MultiIndex.from_tuples(tuples)
+print(index)
+
+#3. from_product()
+
+index = pd.MultiIndex.from_product(
+    [[1, 2, 3], ["red", "blue"]],
+    names=["number", "color"]
+)
+print(index)
+
+#4. from_frame()
+
+df = pd.DataFrame({
+    "car": ["BMW", "BMW"],
+    "model": [1, 2]
+})
+
+index = pd.MultiIndex.from_frame(df)
+print(index)
+
+
+
+
+# Basic Indexing
+
+
+#Select by first level  
+df.loc["A"]
+
+#Select exact row (tuple)
+df.loc[("B", "one")]
+
+#Select specific value
+df.loc[("A", "two"), "Y"]
+
+
+# Advanced Indexing
+
+
+#Multiple selections
+df.loc[[("A", "one"), ("B", "two")]]
+
+#Select full second level across first levels
+df.xs("one", level=1)
+
+#Using slice(None) (hidden gem)
+df.loc[("A", slice(None)), :]
+
+#Clean way using IndexSlice
+idx = pd.IndexSlice
+df.loc[idx["A", :], :]
+
+
+
+# Boolean Indexing (Filtering)
+
+mask = df["X"] > 2
+df[mask]
+
+
+#Combine with index condition
+df[(df["X"] > 2) & (df.index.get_level_values(0) == "A")]
+
+
+
+# Slicing
+
+
+#Proper slicing
+
+df = df.sort_index()  # REQUIRED
+
+df.loc[("A":"B", "one":"three"), :]
+
+
+#Using IndexSlice (best practice)
+idx = pd.IndexSlice
+df.loc[idx["A":"B", "one":"three"], :]
+
+
+# Column + MultiIndex together
+
+df.loc[("A", "one"), "X"]
+
+
+#Important Functions You MUST Know
+
+
+#Get specific level values
+df.index.get_level_values(0)
+
+#Swap levels
+df.swaplevel()
+
+#Sort index
+df.sort_index()
+
+
+
+
+
+# Pandas - Renaming MultiIndex Labels
+
+import pandas as pd
+
+index = pd.MultiIndex.from_tuples([
+    ('A', 'one'),
+    ('A', 'two'),
+    ('B', 'one'),
+    ('B', 'two')
+])
+
+df = pd.DataFrame({
+    "X": [1, 2, 3, 4],
+    "Y": [5, 6, 7, 8]
+}, index=index)
+
+print(df)
+
+
+#1. rename() → Change labels (actual values)
+
+df_renamed = df.rename(index={"A": "Alpha", "one": "1"})
+print(df_renamed)
+
+
+#2. rename_axis() → Change level names
+
+df_named = df.rename_axis(index=["Category", "Type"])
+print(df_named)
+
+#3. set_names() → Directly rename levels
+
+df.index = df.index.set_names(["Group", "Subgroup"])
+print(df)
+
+
+
+
+
+# Pandas - Sorting a MultiIndex
+
+index = pd.MultiIndex.from_tuples([
+    ('B', 'two'),
+    ('A', 'three'),
+    ('A', 'one'),
+    ('B', 'one')
+], names=["Level1", "Level2"])
+
+df = pd.DataFrame({
+    "X": [4, 3, 1, 2],
+    "Y": [8, 7, 5, 6]
+}, index=index)
+
+print(df)
+
+# 1. sort_index() → Sort by index
+df_sorted = df.sort_index()
+print(df_sorted)
+
+
+# 2. Sort by Specific Level
+df.sort_index(level=0)
+
+# 3. Sorting Order (Ascending / Descending)
+df.sort_index(ascending=False)
+
+# 4. sort_values() → Sort by data values
+df.sort_values(by="X")
+
+
+
+
+
+
+# Pandas - Binary Operation
+
+
+#Pandas - Binary Comparison Operations
+
+#1. Basic Operators (with DataFrame)
+
+
+df = pd.DataFrame({
+    "A": [1, 5, 3, 8],
+    "B": [4, 6, 2, 9]
+})
+
+print(df)
+
+print(df < 5)
+print(df > 5)
+print(df == 5)
+
+
+#2. Using Boolean Output for Filtering
+
+df[df["A"] > 3]
+
+
+
+#3. Comparison Functions (Alternative to operators)
+
+s = pd.Series([10, 20, 30, 40])
+
+print(s.gt(25))
+
+#4. DataFrame vs DataFrame Comparison
+
+df1 = pd.DataFrame({'A': [1, 0, 3], 'B': [9, 5, 6]})
+df2 = pd.DataFrame({'A': [1, 2, 1], 'B': [6, 5, 4]})
+
+print(df1 > df2)
+
+#5. Multiple Conditions
+
+df[(df["A"] > 3) & (df["B"] < 8)]
+
+#6. With MultiIndex
+
+df[df.index.get_level_values(0) == "A"]
+
+#7. Handling Missing Values
+
+df[df["A"].notna()]
+
+
+
+
+
+# Pandas - Boolean Indexing
+
+
+df = pd.DataFrame({
+    "A": [1, 3, 5, 7],
+    "B": [5, 2, 8, 4]
+})
+
+print(df)
+
+#1. Creating a Boolean Mask
+mask = df["A"] > 3
+print(mask)
+
+
+#2. Filtering Data
+df[mask]
+
+#3. Using .loc[]
+df.loc[df["A"] > 3, "B"]
+
+#4. Using .iloc[]
+mask = df["A"] > 3
+df.iloc[mask.values, 1]
+
+#5. Multiple Conditions
+df[(df["A"] > 3) & (df["B"] < 6)]
+
+
+
+
+# Pandas - Boolean Masking
+
+#1. Creating a Boolean Mask
+s = pd.Series([1, 5, 2, 8, 4], index=['A', 'B', 'C', 'D', 'E'])
+
+mask = s > 2
+print(mask)
+
+
+#2. Applying the Mask (Filtering)
+s[mask]
+
+
+#3. DataFrame Example (Real Use)
+df = pd.DataFrame({
+    "Col1": [1, 3, 5, 7, 9],
+    "Col2": ["A", "B", "A", "C", "A"]
+})
+
+mask = (df["Col2"] == "A") & (df["Col1"] > 4)
+
+df[mask]
+
+#4. Masking Based on Index
+df = pd.DataFrame({
+    "A1": [10, 20, 30, 40, 50],
+    "A2": [9, 3, 5, 3, 2]
+}, index=["a", "b", "c", "d", "e"])
+
+mask = df.index.isin(["b", "d"])
+
+df[mask]
+
+#5. Masking Based on Column Values (isin)
+df = pd.DataFrame({
+    "A": [1, 2, 3],
+    "B": ["a", "b", "f"]
+})
+
+mask = df["A"].isin([1, 3]) | df["B"].isin(["a"])
+
+df[mask]
+
+
+
+
+
+
+
+
+# Pandas - Data Reshaping & Pivoting
+
+
+
+
+#Pandas - Pivoting
+
+#1. pivot() (Basic Pivot)
+
+df = pd.DataFrame({
+    "Date": ["2024-01-01", "2024-01-01", "2024-01-02", "2024-01-02"],
+    "Category": ["A", "B", "A", "B"],
+    "Sales": [10, 20, 15, 25]
+})
+
+pivot_df = df.pivot(index="Date", columns="Category", values="Sales")
+
+print(pivot_df)
+
+
+#2. pivot_table() (Advanced Pivot)
+
+df = pd.DataFrame({
+    "Date": ["2024-01-01", "2024-01-01", "2024-01-02"],
+    "Category": ["A", "A", "A"],
+    "Sales": [10, 20, 30]
+})
+
+pivot_table = pd.pivot_table(
+    df,
+    values="Sales",
+    index="Date",
+    columns="Category",
+    aggfunc="sum"
+)
+
+print(pivot_table)
+
+
+
+#3. Aggregation Functions
+
+pd.pivot_table(df, values="Sales", index="Date", aggfunc="mean")
+
+
+#4. Multi-Level Pivot (Advanced)
+
+pd.pivot_table(
+    df,
+    values="Sales",
+    index=["Date"],
+    columns=["Category"],
+    aggfunc="sum"
+)
+
+
+
+# Pandas - Stacking and Unstacking
+
+
+#1. Stacking (Columns → Rows)
+
+df = pd.DataFrame({
+    "A": [1, 2],
+    "B": [3, 4]
+}, index=["x", "y"])
+
+print(df)
+
+stacked = df.stack()
+print(stacked)
+
+
+#2. Unstacking (Rows → Columns)
+
+unstacked = stacked.unstack()
+print(unstacked)
+
+
+#3. MultiIndex
+df = pd.DataFrame({
+    "A": [1, 2],
+    "B": [3, 4]
+}, index=pd.MultiIndex.from_tuples([("x", 1), ("x", 2)]))
+
+print(df)
+
+df.stack()
+
+df.unstack(level=1)
+
+
+#4. Handling Missing Values
+
+df.unstack(fill_value=0)
+
+
+
+
+
+# Python Pandas - Melting
+
+
+
+#1. Using pd.melt()
+
+df = pd.DataFrame({
+    'Name': ['A', 'B'],
+    'Math': [90, 80],
+    'Science': [85, 88]
+})
+
+print("Original DataFrame:\n", df)
+
+melted = pd.melt(df, id_vars=['Name'])
+
+print("\nMelted DataFrame:\n", melted)
+
+
+#2. Custom Column Names
+
+melted = pd.melt(df,
+                 id_vars=['Name'],
+                 var_name='Subject',
+                 value_name='Marks')
+
+#3. Melting Selected Columns
+pd.melt(df,
+        id_vars=['Name'],
+        value_vars=['Math'])
+
+
+#4. Melting with Index
+
+df = df.set_index('Name')
+
+melted = pd.melt(df, ignore_index=False)
+
+#5. Advanced Melting → wide_to_long()
+
+df = pd.DataFrame({
+    'id': [1, 2],
+    'height_1': [150, 160],
+    'height_2': [155, 165]
+})
+
+long = pd.wide_to_long(df,
+                       stubnames='height',
+                       i='id',
+                       j='time',
+                       sep='_')
+
+print(long)
+
+
+
+
+# Pandas - Computing Dummy Variables
+
+
+#1. Creating Dummy Variables → pd.get_dummies()
+
+df = pd.DataFrame({
+    "Color": ["Red", "Blue", "Green", "Red"]
+})
+
+print("Original DataFrame:\n", df)
+
+dummies = pd.get_dummies(df["Color"])
+
+print("\nDummy Variables:\n", dummies)
+
+
+#2. Adding Prefix
+
+pd.get_dummies(df["Color"], prefix="Color")
+
+
+#3. Handling Collinearity
+
+pd.get_dummies(df["Color"], drop_first=True)
+
+#. Convert Back → pd.from_dummies()
+
+df = pd.DataFrame({
+    "Color_Red": [1, 0, 0],
+    "Color_Blue": [0, 1, 0],
+    "Color_Green": [0, 0, 1]
+})
+
+
+
+
+
+# Pandas - Categorical Data
+
+import pandas as pd
+
+s = pd.Series(["a", "b", "c", "a"], dtype="category")
+print(s)
+
+
+#Convert Back to Normal Data
+s.astype(str)
+
+
+df = pd.DataFrame({
+    "City": ["Pune", "Mumbai", "Pune", "Delhi"]
+})
+
+df["City"] = df["City"].astype("category")
+
+
+
+original = pd.from_dummies(df, sep="_")
+
+print(original)
+
+
+
+
+# Pandas - Ordering & Sorting Categorical Data
+
+import pandas as pd
+
+s = pd.Series(["Low", "High", "Medium", "Low"])
+s = s.astype("category")
+print(s)
+
+
+#Convert to Ordered Data
+s = s.cat.set_categories(["Low", "Medium", "High"], ordered=True)
+
+#Min & Max
+print(s.min())  # Low
+print(s.max())  # High
+
+#Sorting Categorical Data
+s.sort_values()
+
+#Reordering Categories - reorder_categories()
+s = s.cat.reorder_categories(["High", "Medium", "Low"], ordered=True)
+
+#set_categories()
+s = s.cat.set_categories(["Low", "Medium", "High", "Very High"], ordered=True)
+
+
+
+#Multi-Column Sorting
+df.sort_values(by=["Priority", "Marks"])
+
+
+
+
+
+
+
+# Pandas - Comparing Categorical Data
+
+#Types of Comparisons
+
+#1. Equality Comparison (Always Safe)
+import pandas as pd
+
+s = pd.Series(["Low", "High", "Medium"], dtype="category")
+
+print(s == "Low")
+
+#2. Non-Equality Comparison (>, <, etc.)
+s = pd.Series(["Low", "High", "Medium"])
+
+s = s.astype("category")
+s = s.cat.set_categories(["Low", "Medium", "High"], ordered=True)
+
+print(s > "Medium")
+
+#3. Comparing Two Categorical Series
+s1 = pd.Series(["Low", "High"], dtype="category")
+s2 = pd.Series(["Low", "Low"], dtype="category")
+
+print(s1 == s2)
+
+#4. Comparing with Scalar (Single Value)
+print(s == "Low")
+print(s > "Medium")  # only if ordered
+
+
+
+
+df = pd.DataFrame({
+    "Priority": ["Low", "High", "Medium", "Low"]
+})
+
+df["Priority"] = df["Priority"].astype("category")
+
+df["Priority"] = df["Priority"].cat.set_categories(
+    ["Low", "Medium", "High"], ordered=True
+)
+
+print(df["Priority"] > "Medium")
+
+
+
+
+
+# Pandas - Missing Data
+
+
+
+import pandas as pd
+
+df = pd.DataFrame({
+    "A": [1, None, 3]
+})
+
+print(df.isna())
+print(df.notna())
+
+
+# Handling Missing Data
+
+#A. Fill Missing Values (fillna())
+
+#1. Fill with constant
+df.fillna(0)
+
+#2. Fill with mean (common in ML)
+df['A'].fillna(df['A'].mean())
+
+#3. Forward Fill (time series)
+df.fillna(method='ffill')
+
+#4. Backward Fill
+df.fillna(method='bfill')
+
+
+#B. Drop Missing Values (dropna())
+
+#1. Drop rows
+df.dropna()
+
+#2. Drop columns
+df.dropna(axis=1)
+
+#3. Threshold-based
+df.dropna(thresh=2)
+
+
+
+
+
+
+#Pandas - Filling Missing Data
+
+#Core Methods in Pandas
+
+#A. Fill with Scalar Value (fillna())
+
+import pandas as pd
+import numpy as np
+
+df = pd.DataFrame({
+    "A": [1, np.nan, 3]
+})
+
+df.fillna(0)
+
+
+#B. Forward Fill (ffill()) - df.ffill()
+
+A: [10, NaN, NaN, 20]
+
+→ ffill →
+
+A: [10, 10, 10, 20]
+
+#C. Backward Fill (bfill()) - df.bfill()
+
+A: [10, NaN, NaN, 20]
+
+→ bfill →
+
+A: [10, 20, 20, 20]
+
+
+#D. Limit Filling (limit parameter) - df.ffill(limit=1)
+
+A: [10, NaN, NaN, NaN]
+
+→ limit=1 →
+
+A: [10, 10, NaN, NaN]
+
+
+#E. Replace Method (replace())
+df.replace({1000: 10, 2000: 60})
+
+
+#F. Regex Replacement
+df.replace(r"\.", 10, regex=True)
+
+
+
+
+
+
+# Step 1: Check missing
+df.isna().sum()
+
+# Step 2: Fill numeric
+df['age'] = df['age'].fillna(df['age'].median())
+
+# Step 3: Fill categorical
+df['city'] = df['city'].fillna(df['city'].mode()[0])
+
+# Step 4: Time series
+df['price'] = df['price'].ffill()
+
+
+
+
+# Pandas - Interpolation of Missing Values
+
+
+#Different Interpolation Methods
+
+#1. Linear (default)
+df.interpolate(method='linear')
+
+
+#2. Polynomial
+df.interpolate(method='polynomial', order=2)
+
+#3. Spline
+df.interpolate(method='spline', order=2)
+
+#4. Barycentric / Advanced Methods
+df.interpolate(method='barycentric')
+
+#5. Time-based Interpolation
+df.interpolate(method='time')
+
+
+#Controlling Interpolation (limit)
+df.interpolate(limit=1)
+
+#Time-Series Interpolation (Very Important for ML)
+s.interpolate(method="time")
+
+
+
+
+
+
+
+# Pandas - Dropping Missing Values
+
+import pandas as pd
+import numpy as np
+
+data = {
+    "Name": ["Ajay", "Krishna", "Deepak", "Swati", "Riya"],
+    "Age": [20, 21, np.nan, 19, np.nan],
+    "Marks": [85, np.nan, 90, np.nan, np.nan],
+    "City": ["Pune", "Mumbai", "Delhi", None, "Pune"]
+}
+
+df = pd.DataFrame(data)
+print("Original DataFrame:\n", df)
+
+
+#Drop Rows with ANY Missing Values
+df1 = df.dropna()
+print(df1)
+
+#Drop Rows Only if ALL Values Missing
+df2 = df.dropna(how='all')
+print(df2)
+
+#Keep Rows with Minimum Data (thresh)
+df3 = df.dropna(thresh=3)
+print(df3)
+
+#Drop Based on Important Columns
+df4 = df.dropna(subset=["Age", "Marks"])
+print(df4)
+
+#Drop Columns with Missing Values
+df5 = df.dropna(axis=1)
+print(df5)
+
+
+
+
+
+# Pandas - Calculations with Missing Data
+
+import pandas as pd
+import numpy as np
+
+df = pd.DataFrame({
+    "Sales": [100, np.nan, 300, 400],
+    "Profit": [20, 30, np.nan, 50]
+})
+
+print("Original DataFrame:\n", df)
+
+#Arithmetic Operation
+df["Total"] = df["Sales"] + df["Profit"]
+print(df)
+
+#Summation (Descriptive Stats)
+print("Total Sales:", df["Sales"].sum())
+
+#Product Calculation
+print("Product of Profit:", df["Profit"].prod())
+
+#Cumulative Sum (cumsum())
+print(df["Sales"].cumsum())
+
+#Cumulative Sum with skipna=False
+print(df["Sales"].cumsum(skipna=False))
+
+
+
+
+
+
+# Pandas - Duplicated Data
+
+import pandas as pd
+
+data = {
+    "Name": ["Ankit", "Ravi", "Ankit", "Neha", "Ravi"],
+    "Department": ["IT", "HR", "IT", "Finance", "HR"],
+    "Salary": [50000, 40000, 50000, 60000, 40000]
+}
+
+df = pd.DataFrame(data)
+print("Original DataFrame:\n", df)
+
+#Identify Duplicates
+print(df.duplicated())
+
+#Remove Duplicates
+df_clean = df.drop_duplicates()
+print(df_clean)
+
+#Remove Duplicates Based on Specific Column
+df_unique = df.drop_duplicates(subset=["Name"])
+print(df_unique)
+
+#Keep Last Occurrence Instead
+df_last = df.drop_duplicates(keep='last')
+print(df_last)
+
+
+
+
+
+
+# Pandas - Counting and Retrieving Unique Elements
+
+import pandas as pd
+
+# Create DataFrame
+df = pd.DataFrame({
+    "Name": ["Amit", "Ravi", "Amit", "Neha", "Ravi"],
+    "Marks": [90, 80, 90, 70, 80]
+})
+
+print("Original DataFrame:\n", df)
+
+# Count unique values
+print("\nUnique Count:\n", df.nunique())
+
+# Frequency of values
+print("\nValue Counts (Name):\n", df["Name"].value_counts())
+
+# Get unique values
+print("\nUnique Names:\n", df["Name"].unique())
+
+
+
+
+# Pandas - Duplicated Labels
+
+import pandas as pd
+
+# Create DataFrame with duplicate index labels
+df = pd.DataFrame({
+    "A": [10, 20, 30],
+    "B": [1, 2, 3]
+}, index=["x", "x", "y"])
+
+print("Original DataFrame:\n", df)
+
+# Check if index is unique
+print("\nIs index unique?", df.index.is_unique)
+
+# Detect duplicate labels
+print("\nDuplicate labels:", df.index.duplicated())
+
+
+
+
+
+# Pandas - Grouping & Aggregation
+
+import pandas as pd
+
+# Create DataFrame
+data = {
+    "Team": ["A", "A", "B", "B", "C"],
+    "Points": [10, 20, 15, 25, 30]
+}
+
+df = pd.DataFrame(data)
+print("Original DataFrame:\n", df)
+
+# Group by Team and calculate sum
+grouped = df.groupby("Team")["Points"].sum()
+
+print("\nGrouped Result:\n", grouped)
+
+
+
+
+
+# Pandas - Time-series Data
+
+#Pandas - Date Functionality
+
+
+import pandas as pd
+
+# Generate date range
+dates = pd.date_range(start="2024-01-01", periods=5)
+
+print("Date Range:\n", dates)
+
+
+
+
+# Pandas - Timedelta
+
+
+import pandas as pd
+
+# Create a Timedelta
+td = pd.Timedelta(days=2)
+
+print(td)
+
+
+
+
+
+
+# Pandas - Sparse Data Structures
+
+import pandas as pd
+import numpy as np
+
+# Create data with many NaN values
+data = [1, np.nan, np.nan, np.nan, 5]
+
+# Convert to sparse
+s = pd.Series(data, dtype="Sparse[float]")
+
+print(s)
+print("\nData type:", s.dtype)
+
+
+
+
+
+# Pandas - Caveats & Gotchas
+
+#Gotcha #1: Using if with Pandas Series
+s = pd.Series([False, True, False])
+
+if s.any():
+    print("At least one True")
+
+if s.all():
+    print("All True")
+
+
+#Gotcha #2: Boolean Operations
+
+s = pd.Series([1, 2, 3, 4, 5])
+
+print(s == 4)
+
+#Gotcha #3: isin() Usage
+
+s = pd.Series(['a', 'b', 'c'])
+
+print(s.isin(['a', 'c']))
+
+#Gotcha #4: .ix vs reindex()
+
+import pandas as pd
+
+df = pd.DataFrame({"A": [10, 20, 30]}, index=["a", "b", "c"])
+
+print(df.reindex([1, 2]))
+
+
+    
