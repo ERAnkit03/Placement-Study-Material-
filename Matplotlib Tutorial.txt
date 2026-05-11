@@ -1,0 +1,429 @@
+Matplot lib Tutorial
+
+
+
+# PyPlot
+
+import matplotlib.pyplot as plt
+
+import numpy as np
+
+Xarr = np.array([1,2,3,4,5,6])
+Yarr = np.array([6,1,3,4,2,5])
+
+plt.plot(Xarr , Yarr)
+plt.title('Demo')
+plt.grid(color='gray', linestyle='--', linewidth=0.5)
+plt.xlim(0, 10)
+plt.show()
+
+
+
+# Pyplot API
+
+import pandas as pd
+
+data = {
+    "Salary" : [25000 , 10000 , 200000 , 40000 , 28888]
+}
+
+df = pd.DataFrame(data)
+
+df.head()
+
+
+
+
+#Markers
+
+import matplotlib.pyplot as plt
+import numpy as np
+
+y = np.array([3, 8, 1, 10])
+
+# plt.plot(y, marker='D')  
+plt.plot(y, 'o:r')
+plt.show()
+
+
+
+# Line Plot
+
+arr = np.array([1,2,3,6,2,5])
+
+plt.plot(arr , marker='o' , linestyle='--' , color='y' , lw=3 ,)
+plt.show()
+
+
+
+x1 = [0,1,2,3]
+y1 = [3,8,1,10]
+
+x2 = [0,1,2,3]
+y2 = [6,2,7,11]
+
+plt.plot(x1, y1, x2, y2)
+plt.show()
+
+
+
+
+# Line Label - font
+
+font1 = {'family':'serif', 'color':'blue', 'size':20}
+font2 = {'family':'serif', 'color':'darkred', 'size':15}
+
+plt.title("Health Data", fontdict=font1 ,loc='left')
+plt.xlabel("Pulse", fontdict=font2)
+plt.ylabel("Calories", fontdict=font2)
+
+
+
+
+
+#Subplot
+
+import matplotlib.pyplot as plt
+
+x = [0,1,2,3]
+y1 = [3,8,1,10]
+y2 = [10,20,30,40]
+
+# First graph
+plt.subplot(1, 2, 1)
+plt.plot(x, y1)
+
+# Second graph
+plt.subplot(1, 2, 2)
+plt.plot(x, y2)
+
+plt.subplot(2, 3, 1)
+plt.plot(x, y1)
+
+plt.subplot(2, 3, 2)
+plt.plot(x, y2)
+
+plt.subplot(2, 3, 3)
+plt.plot(x, y1)
+
+plt.subplot(2, 3, 4)
+plt.plot(x, y2)
+
+plt.subplot(2, 3, 5)
+plt.plot(x, y1)
+
+plt.subplot(2, 3, 6)
+plt.plot(x, y2)
+
+plt.show()
+
+
+
+
+
+#Scatter plota
+
+import matplotlib.pyplot as plt
+import numpy as np
+
+x = np.random.randint(100, size=50)
+y = np.random.randint(100, size=50)
+colors = np.random.randint(100, size=50)
+sizes = np.random.randint(500, size=50)
+
+plt.scatter(x, y, c=colors, s=sizes, alpha=0.5, cmap='viridis')
+
+plt.colorbar()
+plt.title("Scatter Plot Example")
+
+plt.show()
+
+
+
+
+# Bar Plot
+
+
+import matplotlib.pyplot as plt
+
+x = ["Apple", "Banana", "Mango", "Orange"]
+y = [40, 25, 35, 30]
+
+plt.bar(x, y, color='skyblue', width=0.5)
+
+plt.title("Fruit Sales")
+plt.xlabel("Fruits")
+plt.ylabel("Quantity")
+
+plt.grid(axis='y')
+
+plt.show()
+
+
+
+
+
+# Histogram
+
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+x = np.random.normal(170, 10, 250)
+
+plt.hist(x, bins=15, color='green', edgecolor='black')
+
+plt.title("Height Distribution")
+plt.xlabel("Height")
+plt.ylabel("Number of People")
+
+plt.show()
+
+
+
+
+
+# Pie Chart
+
+import matplotlib.pyplot as plt
+
+y = [35, 25, 25, 15]
+labels = ["Apples", "Bananas", "Cherries", "Dates"]
+explode = [0.2, 0, 0, 0]
+colors = ["red", "yellow", "pink", "green"]
+
+plt.pie(y, labels=labels, explode=explode, colors=colors, shadow=True)
+
+plt.title("Fruit Distribution")
+plt.legend(title="Fruits")
+
+plt.show()
+
+
+
+
+
+
+#Count Plot (Univariate Categorical)
+
+import matplotlib.pyplot as plt
+from collections import Counter
+
+data = ["A", "B", "A", "C", "B", "A"]
+
+count = Counter(data)
+
+plt.bar(count.keys(), count.values())
+plt.title("Count Plot")
+plt.xlabel("Category")
+plt.ylabel("Count")
+
+plt.show()
+
+
+
+
+
+# Bivariate Analysis 
+
+
+
+# Num vs Num 
+
+
+
+# Scatter plot 
+
+import matplotlib.pyplot as plt
+
+age = [20,25,30,35,40]
+salary = [20000,30000,40000,50000,60000]
+
+plt.scatter(age, salary)
+
+plt.xlabel("Age")
+plt.ylabel("Salary")
+plt.title("Age vs Salary")
+
+plt.show()
+
+
+
+
+
+
+import matplotlib.pyplot as plt
+
+age = [19,18,20,21]
+sal = [100000, 200000, 300000, 400000]
+
+plt.scatter(age , sal)
+plt.show()
+
+plt.plot(age , sal)
+plt.show()
+
+plt.bar(age , sal)
+plt.show()
+
+
+
+
+
+
+
+# Box Plot
+
+
+import matplotlib.pyplot as plt
+
+marks = [40, 45, 50, 55, 60, 65, 70, 100]
+
+plt.boxplot(marks)
+
+plt.title("Student Marks Box Plot")
+
+plt.show()
+
+
+
+
+#stacked bar chart
+
+import matplotlib.pyplot as plt
+
+department = ["HR", "IT", "Sales"]
+
+male = [20, 30, 40]
+female = [15, 25, 35]
+
+plt.bar(department, male, label="Male")
+
+plt.bar(department,
+        female,
+        bottom=male,
+        label="Female")
+
+plt.title("Employee Distribution")
+
+plt.xlabel("Department")
+plt.ylabel("Employees")
+
+plt.legend()
+
+plt.show()
+
+
+
+
+
+# Bubble Plot
+
+
+import matplotlib.pyplot as plt
+
+age = [20, 25, 30, 35]
+salary = [30000, 40000, 50000, 60000]
+experience = [100, 300, 500, 700]
+
+plt.scatter(age,
+            salary,
+            s=experience)
+
+plt.xlabel("Age")
+plt.ylabel("Salary")
+
+plt.title("Bubble Plot")
+
+plt.show()
+
+
+
+
+
+# Grouped Bar Plot
+
+import matplotlib.pyplot as plt
+import numpy as np
+
+department = ["HR", "IT", "Sales"]
+
+male = [20, 30, 40]
+female = [15, 25, 35]
+
+x = np.arange(len(department))
+
+width = 0.3
+
+plt.bar(x - width/2,
+        male,
+        width,
+        label="Male")
+
+plt.bar(x + width/2,
+        female,
+        width,
+        label="Female")
+
+plt.xticks(x, department)
+
+plt.xlabel("Department")
+plt.ylabel("Employees")
+
+plt.title("Grouped Bar Plot")
+
+plt.legend()
+
+plt.show()
+
+
+
+
+
+# Multiple Line Plot
+
+import matplotlib.pyplot as plt
+
+month = [1, 2, 3, 4]
+
+sales_A = [100, 120, 140, 160]
+sales_B = [80, 90, 100, 110]
+
+plt.plot(month,
+         sales_A,
+         label="Product A")
+
+plt.plot(month,
+         sales_B,
+         label="Product B")
+
+plt.xlabel("Month")
+plt.ylabel("Sales")
+
+plt.title("Sales Comparison")
+
+plt.legend()
+
+plt.show()
+
+
+
+
+
+# 3D Plot
+
+
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+
+fig = plt.figure()
+
+ax = fig.add_subplot(111, projection='3d')
+
+x = [1,2,3]
+y = [4,5,6]
+z = [7,8,9]
+
+ax.scatter(x, y, z)
+
+plt.show()
