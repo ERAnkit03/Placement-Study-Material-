@@ -1,0 +1,1831 @@
+# Seaborn objects Interface
+
+
+
+import seaborn.objects as so
+import seaborn as sns
+
+penguins = sns.load_dataset("penguins")
+
+(
+    so.Plot(
+        penguins,
+        x="bill_length_mm",
+        y="bill_depth_mm",
+        color="species",
+        pointsize="body_mass_g"
+    )
+    .add(so.Dot(
+        color="red",
+        pointsize=5
+    ))
+)
+
+
+
+#Aggregation
+
+
+(
+    so.Plot(
+        penguins,
+        x="species",
+        y="body_mass_g"
+    )
+    .add(
+        so.Bar(),
+        so.Agg()
+    )
+)
+
+
+#Overlapping problem 
+
+(
+    so.Plot(
+        penguins,
+        x="species",
+        y="body_mass_g",
+        color="sex"
+    )
+    .add(
+        so.Bar(),
+        so.Agg(),
+        so.Dodge()
+    )
+)
+
+
+#Jitter
+
+(
+    so.Plot(
+        penguins,
+        x="species",
+        y="body_mass_g"
+    )
+    .add(
+        so.Dot(),
+        so.Jitter(.3)
+    )
+)
+
+
+
+#Error Bars
+
+(
+    so.Plot(
+        penguins,
+        x="body_mass_g",
+        y="species",
+        color="sex"
+    )
+    .add(
+        so.Range(),
+        so.Est(errorbar="sd"),
+        so.Dodge()
+    )
+)
+
+
+
+#Layer-Specific Mapping
+
+
+# (
+#     so.Plot(
+#         tips,
+#         x="total_bill",
+#         y="tip"
+#     )
+#     .add(
+#         so.Dots(),
+#         color="time"
+#     )
+#     .add(
+#         so.Line(color=".2"),
+#         so.PolyFit()
+#     )
+# )
+
+
+
+#Faceting (Subplots)
+
+
+(
+    so.Plot(
+        penguins,
+        x="flipper_length_mm"
+    )
+    .facet(col="species")
+    .add(
+        so.Bars(),
+        so.Hist()
+    )
+)
+
+
+#Pairing
+
+(
+    so.Plot(
+        penguins,
+        y="body_mass_g",
+        color="species"
+    )
+    .pair(
+        x=["bill_length_mm", "bill_depth_mm"]
+    )
+    .add(so.Dots())
+)
+
+
+# Scale Customization 
+
+(
+    so.Plot(
+        diamonds,
+        x="carat",
+        y="price",
+        color="carat",
+        pointsize="depth"
+    )
+    .add(so.Dots())
+    .scale(
+        y="log",
+        color="viridis",
+        pointsize=(2, 10)
+    )
+)
+
+
+#Theme Customization
+
+
+from seaborn import axes_style
+
+theme_dict = {
+    **axes_style("whitegrid"),
+    "grid.linestyle": ":"
+}
+
+so.Plot().theme(theme_dict)
+
+
+
+
+
+
+
+
+
+# Properties of Mark Objects
+
+
+#1. Coordinate Properties
+
+import seaborn as sns
+import seaborn.objects as so
+
+tips = sns.load_dataset("tips")
+
+(
+    so.Plot(
+        tips,
+        x="total_bill",
+        y="tip"
+    )
+    .add(so.Dot())
+)
+
+
+#2. Color Properties
+
+(
+    so.Plot(
+        tips,
+        x="total_bill",
+        y="tip"
+    )
+    .add(
+        so.Dot(color="red")
+    )
+)
+
+
+#3. Alpha Properties (Transparency)
+
+(
+    so.Plot(
+        tips,
+        x="total_bill",
+        y="tip"
+    )
+    .add(
+        so.Dot(alpha=.3)
+    )
+)
+
+
+
+#4. Style Properties
+
+(
+    so.Plot(
+        tips,
+        x="total_bill",
+        y="tip"
+    )
+    .add(
+        so.Dot(marker="x")
+    )
+)
+
+
+#5. Size Properties
+
+(
+    so.Plot(
+        tips,
+        x="total_bill",
+        y="tip"
+    )
+    .add(
+        so.Dot(pointsize=8)
+    )
+)
+
+
+#6. Text Properties
+
+(
+    so.Plot(
+        x=[1],
+        y=[1]
+    )
+    .add(
+        so.Text(
+            text="Hello",
+            fontsize=18
+        )
+    )
+)
+
+# Group
+
+(
+    so.Plot(
+        tips,
+        x="day",
+        y="tip",
+        group="sex"
+    )
+    .add(so.Line())
+)
+
+
+
+
+
+
+#Statistical Relationships in Seaborn 
+
+
+#1. scatterplot()
+
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+tips = sns.load_dataset("tips")
+
+sns.scatterplot(
+    data=tips,
+    x="total_bill",
+    y="tip"
+)
+
+plt.show()
+
+#2. lineplot()
+
+
+fmri = sns.load_dataset("fmri")
+
+sns.lineplot(
+    data=fmri,
+    x="timepoint",
+    y="signal"
+)
+
+plt.show()
+
+
+#3. relplot()
+
+sns.relplot(
+    data=tips,
+    x="total_bill",
+    y="tip"
+)
+
+plt.show()
+
+
+#4. Faceting with relplot()
+
+sns.relplot(
+    data=tips,
+    x="total_bill",
+    y="tip",
+    hue="smoker",
+    col="time"
+)
+
+plt.show()
+
+
+#5. lmplot() — Regression Plot
+
+sns.lmplot(
+    data=tips,
+    x="total_bill",
+    y="tip"
+)
+
+plt.show()
+
+
+#6. regplot() — Simple Regression Plot
+
+sns.regplot(
+    data=tips,
+    x="total_bill",
+    y="tip"
+)
+
+
+
+
+
+
+
+# Visualizing Distributions in Seaborn
+
+#1. Histogram — histplot()
+
+
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+penguins = sns.load_dataset("penguins")
+
+sns.histplot(
+    data=penguins,
+    x="flipper_length_mm"
+)
+
+#Changing Bin Size
+sns.histplot(
+    data=penguins,
+    x="flipper_length_mm",
+    binwidth=3
+)
+
+#Using Number of Bins
+sns.histplot(
+    data=penguins,
+    x="flipper_length_mm",
+    bins=20
+)
+
+#Discrete Histogramstips = sns.load_dataset("tips")
+
+sns.histplot(
+    data=tips,
+    x="size",
+    discrete=True
+)
+
+#Histogram with hue
+sns.histplot(
+    data=penguins,
+    x="flipper_length_mm",
+    hue="species"
+)
+
+#Problem - Histograms overlap.
+
+#Solution 1 — Step Plot
+sns.histplot(
+    data=penguins,
+    x="flipper_length_mm",
+    hue="species",
+    element="step"
+)
+
+#Solution 2 — Stack
+sns.histplot(
+    data=penguins,
+    x="flipper_length_mm",
+    hue="species",
+    multiple="stack"
+)
+
+#Solution 3 — Dodge
+sns.histplot(
+    data=penguins,
+    x="flipper_length_mm",
+    hue="sex",
+    multiple="dodge"
+)
+
+
+
+
+
+#2. KDE Plot — kdeplot()
+
+
+sns.kdeplot(
+    data=penguins,
+    x="flipper_length_mm"
+)
+
+#KDE with Fill
+sns.kdeplot(
+    data=penguins,
+    x="flipper_length_mm",
+    fill=True
+)
+
+#KDE with Categories
+sns.kdeplot(
+    data=penguins,
+    x="flipper_length_mm",
+    hue="species",
+    fill=True
+)
+
+#KDE Smoothing Control - bw_adjust
+sns.kdeplot(
+    data=penguins,
+    x="flipper_length_mm",
+    bw_adjust=0.5
+)
+
+
+
+
+
+#3. ECDF Plot — ecdfplot()
+
+sns.ecdfplot(
+    data=penguins,
+    x="flipper_length_mm",
+    hue="species"
+)
+
+
+
+
+#7. rugplot()
+
+sns.rugplot(
+    data=penguins,
+    x="bill_length_mm"
+)
+
+
+
+
+# Controlling Figure Aesthetics in Seaborn
+
+Seaborn provides powerful tools to make plots:
+
+* Beautiful
+* Readable
+* Professional
+* Presentation-ready
+
+The aesthetics system mainly controls:
+
+1. **Style** → Background, grids, spines
+2. **Context** → Scaling of text and plot elements
+
+---
+
+# Basic Setup
+
+```python id="a1p9we"
+import numpy as np
+import seaborn as sns
+import matplotlib.pyplot as plt
+```
+
+---
+
+# Sample Function for Demonstration
+
+```python id="d3q6hs"
+def sinplot(n=10, flip=1):
+    x = np.linspace(0, 14, 100)
+
+    for i in range(1, n + 1):
+        plt.plot(
+            x,
+            np.sin(x + i * .5) * (n + 2 - i) * flip
+        )
+```
+
+---
+
+# 1. Default Matplotlib Style
+
+```python id="yyh4q2"
+sinplot()
+plt.show()
+```
+
+Produces a plain matplotlib figure.
+
+---
+
+# 2. Applying Seaborn Theme
+
+```python id="h5f40w"
+sns.set_theme()
+
+sinplot()
+
+plt.show()
+```
+
+### What Changes?
+
+✔ Better colors
+✔ Better grid
+✔ Improved spacing
+✔ Modern appearance
+
+---
+
+# Seaborn Style Functions
+
+| Function           | Purpose                 |
+| ------------------ | ----------------------- |
+| set_style()        | Set plot style          |
+| axes_style()       | Temporary style         |
+| set_context()      | Scale plot elements     |
+| plotting_context() | Temporary context       |
+| set_theme()        | Set everything together |
+
+---
+
+# Seaborn Figure Styles
+
+There are 5 built-in styles:
+
+| Style     | Description                  |
+| --------- | ---------------------------- |
+| darkgrid  | Default dark background grid |
+| whitegrid | White background with grid   |
+| dark      | Dark background without grid |
+| white     | Clean white background       |
+| ticks     | White with ticks             |
+
+---
+
+# 3. whitegrid Style
+
+Best for:
+
+* Statistical plots
+* Boxplots
+* Barplots
+
+```python id="1dh3zq"
+sns.set_style("whitegrid")
+
+data = np.random.normal(size=(20, 6))
+
+sns.boxplot(data=data)
+
+plt.show()
+```
+
+---
+
+# 4. dark Style
+
+```python id="1wtlyl"
+sns.set_style("dark")
+
+sinplot()
+
+plt.show()
+```
+
+### Good For
+
+* Presentation slides
+* Visual storytelling
+
+---
+
+# 5. white Style
+
+```python id="nifm27"
+sns.set_style("white")
+
+sinplot()
+
+plt.show()
+```
+
+### Good For
+
+* Clean scientific papers
+* Minimalist visuals
+
+---
+
+# 6. ticks Style
+
+```python id="k1jzwj"
+sns.set_style("ticks")
+
+sinplot()
+
+plt.show()
+```
+
+### Adds
+
+✔ Tick marks
+✔ Cleaner scientific appearance
+
+---
+
+# Removing Axes Spines
+
+Spines = borders around the plot.
+
+---
+
+# 7. Using despine()
+
+```python id="q12t5n"
+sns.set_style("ticks")
+
+sinplot()
+
+sns.despine()
+
+plt.show()
+```
+
+### Removes
+
+* Top spine
+* Right spine
+
+Result → cleaner plots
+
+---
+
+# 8. Offset Spines
+
+```python id="9t9qmc"
+data = np.random.normal(size=(20, 6))
+
+sns.violinplot(data=data)
+
+sns.despine(
+    offset=10,
+    trim=True
+)
+
+plt.show()
+```
+
+## Parameters
+
+| Parameter | Meaning                  |
+| --------- | ------------------------ |
+| offset    | Distance from plot       |
+| trim      | Trim spine to tick range |
+
+---
+
+# 9. Remove Specific Spines
+
+```python id="crsm7s"
+sns.set_style("whitegrid")
+
+sns.boxplot(data=data)
+
+sns.despine(left=True)
+
+plt.show()
+```
+
+Removes left spine only.
+
+---
+
+# Temporary Styling with `with`
+
+Useful when:
+
+* Different subplots need different styles
+
+---
+
+# 10. Temporary Style Example
+
+```python id="z7bhh0"
+fig = plt.figure(figsize=(8, 8))
+
+with sns.axes_style("darkgrid"):
+    plt.subplot(221)
+    sinplot(4)
+
+with sns.axes_style("white"):
+    plt.subplot(222)
+    sinplot(4)
+
+with sns.axes_style("ticks"):
+    plt.subplot(223)
+    sinplot(4)
+
+with sns.axes_style("whitegrid"):
+    plt.subplot(224)
+    sinplot(4)
+
+plt.tight_layout()
+plt.show()
+```
+
+---
+
+# Customizing Styles
+
+You can override default parameters.
+
+---
+
+# 11. Custom Face Color
+
+```python id="h7dbk8"
+sns.set_style(
+    "darkgrid",
+    {
+        "axes.facecolor": ".9"
+    }
+)
+
+sinplot()
+
+plt.show()
+```
+
+### Result
+
+Light gray background.
+
+---
+
+# Viewing Current Style Settings
+
+```python id="n7n1m5"
+sns.axes_style()
+```
+
+Returns dictionary of style parameters.
+
+---
+
+# Plot Contexts
+
+Context controls:
+
+* Font size
+* Line thickness
+* Tick size
+* Overall scaling
+
+---
+
+# Available Contexts
+
+| Context  | Usage         |
+| -------- | ------------- |
+| paper    | Small plots   |
+| notebook | Default       |
+| talk     | Presentations |
+| poster   | Large posters |
+
+---
+
+# 12. Paper Context
+
+```python id="sxj83n"
+sns.set_context("paper")
+
+sinplot()
+
+plt.show()
+```
+
+Small and compact.
+
+---
+
+# 13. Talk Context
+
+```python id="9bndnh"
+sns.set_context("talk")
+
+sinplot()
+
+plt.show()
+```
+
+Larger text and lines.
+
+---
+
+# 14. Poster Context
+
+```python id="w8sz96"
+sns.set_context("poster")
+
+sinplot()
+
+plt.show()
+```
+
+Very large elements.
+
+---
+
+# 15. Scaling Fonts
+
+```python id="1eh69q"
+sns.set_context(
+    "notebook",
+    font_scale=1.5
+)
+
+sinplot()
+
+plt.show()
+```
+
+### Result
+
+Fonts become 1.5× larger.
+
+---
+
+# 16. Custom Line Width
+
+```python id="b3hnjo"
+sns.set_context(
+    "notebook",
+    rc={
+        "lines.linewidth": 3
+    }
+)
+
+sinplot()
+
+plt.show()
+```
+
+---
+
+# Temporary Context
+
+```python id="0w45gl"
+with sns.plotting_context("poster"):
+    sinplot()
+
+plt.show()
+```
+
+Only inside block.
+
+---
+
+# Using `set_theme()`
+
+Best overall function.
+
+```python id="lx0bqv"
+sns.set_theme(
+    style="whitegrid",
+    context="talk",
+    palette="deep"
+)
+
+sinplot()
+
+plt.show()
+```
+
+Combines:
+
+* Style
+* Context
+* Palette
+
+---
+
+# Common rc Parameters
+
+| Parameter       | Meaning          |
+| --------------- | ---------------- |
+| axes.facecolor  | Background color |
+| grid.color      | Grid color       |
+| lines.linewidth | Line thickness   |
+| axes.labelsize  | Axis label size  |
+| xtick.labelsize | X tick size      |
+| ytick.labelsize | Y tick size      |
+
+---
+
+# Real-World Example
+
+## Professional Dashboard Style
+
+```python id="2x4hkn"
+sns.set_theme(
+    style="whitegrid",
+    context="talk",
+    palette="muted"
+)
+
+tips = sns.load_dataset("tips")
+
+sns.scatterplot(
+    data=tips,
+    x="total_bill",
+    y="tip",
+    hue="time"
+)
+
+sns.despine()
+
+plt.show()
+```
+
+---
+
+# Best Style Recommendations
+
+| Plot Type            | Recommended Style |
+| -------------------- | ----------------- |
+| Statistical plots    | whitegrid         |
+| Presentations        | dark              |
+| Research papers      | ticks             |
+| Dashboards           | white             |
+| Exploratory analysis | darkgrid          |
+
+---
+
+# Best Practices
+
+## Use `whitegrid`
+
+For:
+
+* Boxplots
+* Violinplots
+* Barplots
+
+## Use `ticks`
+
+For:
+
+* Scientific papers
+* Regression plots
+
+## Use `talk`
+
+For:
+
+* PPT presentations
+
+## Use `poster`
+
+For:
+
+* Conferences
+
+---
+
+# Complete Professional Example
+
+```python id="nwbjcv"
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+sns.set_theme(
+    style="ticks",
+    context="talk",
+    palette="deep"
+)
+
+tips = sns.load_dataset("tips")
+
+sns.regplot(
+    data=tips,
+    x="total_bill",
+    y="tip"
+)
+
+sns.despine()
+
+plt.show()
+```
+
+This creates:
+✔ Clean plot
+✔ Professional styling
+✔ Better readability
+✔ Presentation-ready figure
+
+
+
+
+
+
+
+# Seaborn Visualization Concepts — Consolidated Study Notes
+
+## 1. Regression & Statistical Visualization
+
+Seaborn provides high-level tools for visualizing statistical relationships, especially linear regression models.
+
+### Core Functions
+
+| Function        | Type         | Purpose                                         |
+| --------------- | ------------ | ----------------------------------------------- |
+| `sns.regplot()` | Axes-level   | Draw regression on a single matplotlib axis     |
+| `sns.lmplot()`  | Figure-level | Combines regression with faceting (`FacetGrid`) |
+
+### Basic Regression Plot
+
+```python
+tips = sns.load_dataset("tips")
+
+sns.regplot(
+    x="total_bill",
+    y="tip",
+    data=tips
+)
+```
+
+```python
+sns.lmplot(
+    x="total_bill",
+    y="tip",
+    data=tips
+)
+```
+
+---
+
+## 2. Improving Regression Visualizations
+
+### Handling Discrete Variables
+
+#### Add Jitter
+
+Useful when x-values are discrete.
+
+```python
+sns.lmplot(
+    x="size",
+    y="tip",
+    data=tips,
+    x_jitter=.05
+)
+```
+
+### Aggregate Estimates
+
+```python
+sns.lmplot(
+    x="size",
+    y="tip",
+    data=tips,
+    x_estimator=np.mean
+)
+```
+
+---
+
+## 3. Nonlinear & Robust Regression
+
+### Polynomial Regression
+
+```python
+sns.lmplot(
+    x="x",
+    y="y",
+    data=anscombe.query("dataset == 'II'"),
+    order=2,
+    ci=None
+)
+```
+
+### Robust Regression
+
+Handles outliers better.
+
+```python
+sns.lmplot(
+    x="x",
+    y="y",
+    data=anscombe.query("dataset == 'III'"),
+    robust=True
+)
+```
+
+---
+
+## 4. Logistic Regression
+
+For binary targets.
+
+```python
+tips["big_tip"] = (
+    tips.tip / tips.total_bill
+) > .15
+
+sns.lmplot(
+    x="total_bill",
+    y="big_tip",
+    data=tips,
+    logistic=True,
+    y_jitter=.03
+)
+```
+
+---
+
+## 5. LOWESS Smoothing
+
+Nonparametric regression.
+
+```python
+sns.lmplot(
+    x="total_bill",
+    y="tip",
+    data=tips,
+    lowess=True
+)
+```
+
+---
+
+## 6. Residual Plots
+
+Used for regression diagnostics.
+
+```python
+sns.residplot(
+    x="x",
+    y="y",
+    data=anscombe.query("dataset == 'I'")
+)
+```
+
+### Interpretation
+
+Good regression:
+
+* Residuals randomly scattered around 0
+
+Bad regression:
+
+* Visible structure/patterns remain
+
+---
+
+# 7. Conditioning on Additional Variables
+
+## Using `hue`
+
+```python
+sns.lmplot(
+    x="total_bill",
+    y="tip",
+    hue="smoker",
+    data=tips
+)
+```
+
+### Different Markers
+
+```python
+sns.lmplot(
+    x="total_bill",
+    y="tip",
+    hue="smoker",
+    markers=["o", "x"],
+    palette="Set1",
+    data=tips
+)
+```
+
+---
+
+## Faceting
+
+### Column Facets
+
+```python
+sns.lmplot(
+    x="total_bill",
+    y="tip",
+    col="time",
+    hue="smoker",
+    data=tips
+)
+```
+
+### Row + Column Facets
+
+```python
+sns.lmplot(
+    x="total_bill",
+    y="tip",
+    row="sex",
+    col="time",
+    hue="smoker",
+    data=tips
+)
+```
+
+---
+
+# 8. Multi-Plot Grid Systems
+
+Seaborn provides structured multi-plot layouts.
+
+## Main Grid Classes
+
+| Class       | Purpose                               |
+| ----------- | ------------------------------------- |
+| `FacetGrid` | Same relationship across subsets      |
+| `PairGrid`  | Different variable pair relationships |
+
+---
+
+# 9. FacetGrid
+
+## Basic Usage
+
+```python
+g = sns.FacetGrid(tips, col="time")
+g.map(sns.histplot, "tip")
+```
+
+---
+
+## Scatterplot Example
+
+```python
+g = sns.FacetGrid(
+    tips,
+    col="sex",
+    hue="smoker"
+)
+
+g.map(
+    sns.scatterplot,
+    "total_bill",
+    "tip"
+)
+
+g.add_legend()
+```
+
+---
+
+## Grid Configuration
+
+### Size & Aspect
+
+```python
+g = sns.FacetGrid(
+    tips,
+    col="day",
+    height=4,
+    aspect=.5
+)
+```
+
+### Ordering
+
+```python
+ordered_days = tips.day.value_counts().index
+
+g = sns.FacetGrid(
+    tips,
+    row="day",
+    row_order=ordered_days
+)
+```
+
+---
+
+## Wrapping Columns
+
+```python
+g = sns.FacetGrid(
+    attend,
+    col="subject",
+    col_wrap=4
+)
+```
+
+---
+
+## Customization
+
+```python
+g.set_axis_labels(
+    "Total bill",
+    "Tip"
+)
+
+g.set(
+    xticks=[10, 30, 50],
+    yticks=[2, 6, 10]
+)
+```
+
+---
+
+# 10. Custom Plot Functions in FacetGrid
+
+## Requirements
+
+Custom functions must:
+
+1. Plot on current matplotlib axis
+2. Accept positional data arguments
+3. Accept `color` and `label`
+4. Ideally support `**kwargs`
+
+---
+
+## Example: Quantile Plot
+
+```python
+from scipy import stats
+
+def quantile_plot(x, **kwargs):
+    quantiles, xr = stats.probplot(x, fit=False)
+    plt.scatter(xr, quantiles, **kwargs)
+
+g = sns.FacetGrid(tips, col="sex")
+g.map(quantile_plot, "total_bill")
+```
+
+---
+
+# 11. PairGrid
+
+Used for pairwise relationships.
+
+## Basic Example
+
+```python
+iris = sns.load_dataset("iris")
+
+g = sns.PairGrid(iris)
+g.map(sns.scatterplot)
+```
+
+---
+
+## Different Diagonal Plots
+
+```python
+g = sns.PairGrid(iris)
+
+g.map_diag(sns.histplot)
+g.map_offdiag(sns.scatterplot)
+```
+
+---
+
+## Hue Mapping
+
+```python
+g = sns.PairGrid(
+    iris,
+    hue="species"
+)
+
+g.map_diag(sns.histplot)
+g.map_offdiag(sns.scatterplot)
+
+g.add_legend()
+```
+
+---
+
+## Different Upper/Lower Plots
+
+```python
+g = sns.PairGrid(iris)
+
+g.map_upper(sns.scatterplot)
+g.map_lower(sns.kdeplot)
+g.map_diag(sns.kdeplot)
+```
+
+---
+
+# 12. pairplot()
+
+High-level shortcut for PairGrid.
+
+```python
+sns.pairplot(
+    iris,
+    hue="species"
+)
+```
+
+### KDE Diagonal
+
+```python
+sns.pairplot(
+    iris,
+    hue="species",
+    diag_kind="kde"
+)
+```
+
+---
+
+# 13. Figure Aesthetics
+
+## Global Theme
+
+```python
+sns.set_theme()
+```
+
+---
+
+# 14. Style Presets
+
+| Style         | Description       |
+| ------------- | ----------------- |
+| `"darkgrid"`  | Default with grid |
+| `"whitegrid"` | Strong gridlines  |
+| `"dark"`      | Dark background   |
+| `"white"`     | Minimal clean     |
+| `"ticks"`     | Adds axis ticks   |
+
+---
+
+## Example
+
+```python
+sns.set_style("whitegrid")
+```
+
+---
+
+# 15. Removing Spines
+
+```python
+sns.despine()
+```
+
+### Offset & Trim
+
+```python
+sns.despine(
+    offset=10,
+    trim=True
+)
+```
+
+---
+
+# 16. Temporary Styling
+
+```python
+with sns.axes_style("white"):
+    sns.scatterplot(data=tips)
+```
+
+---
+
+# 17. Plot Context Scaling
+
+Controls element sizes.
+
+## Contexts
+
+| Context      | Use            |
+| ------------ | -------------- |
+| `"paper"`    | Small figures  |
+| `"notebook"` | Default        |
+| `"talk"`     | Presentations  |
+| `"poster"`   | Large displays |
+
+---
+
+## Example
+
+```python
+sns.set_context("talk")
+```
+
+### Font Scaling
+
+```python
+sns.set_context(
+    "notebook",
+    font_scale=1.5
+)
+```
+
+---
+
+# 18. Color Theory Basics
+
+## Three Main Components
+
+| Component  | Meaning      |
+| ---------- | ------------ |
+| Hue        | Actual color |
+| Saturation | Intensity    |
+| Luminance  | Brightness   |
+
+---
+
+# 19. Choosing Color Palettes
+
+## Palette Categories
+
+| Type        | Use Case                          |
+| ----------- | --------------------------------- |
+| Qualitative | Categories                        |
+| Sequential  | Numeric magnitude                 |
+| Diverging   | Numeric deviation around midpoint |
+
+---
+
+# 20. Qualitative Palettes
+
+Best for categorical data.
+
+## Built-in Options
+
+```python
+sns.color_palette("deep")
+sns.color_palette("muted")
+sns.color_palette("pastel")
+sns.color_palette("bright")
+sns.color_palette("dark")
+sns.color_palette("colorblind")
+```
+
+---
+
+## Circular Color Systems
+
+### HLS
+
+```python
+sns.color_palette("hls", 8)
+```
+
+### HUSL / HSLuv
+
+```python
+sns.color_palette("husl", 8)
+```
+
+---
+
+## Color Brewer Palettes
+
+```python
+sns.color_palette("Set2")
+sns.color_palette("Paired")
+```
+
+---
+
+# 21. Sequential Palettes
+
+Used for numeric data.
+
+## Perceptually Uniform
+
+```python
+sns.color_palette("rocket", as_cmap=True)
+sns.color_palette("mako", as_cmap=True)
+sns.color_palette("flare", as_cmap=True)
+sns.color_palette("crest", as_cmap=True)
+```
+
+---
+
+## Matplotlib Sequential Maps
+
+```python
+sns.color_palette("viridis", as_cmap=True)
+sns.color_palette("magma", as_cmap=True)
+```
+
+---
+
+## Reversed Palettes
+
+```python
+sns.color_palette("rocket_r", as_cmap=True)
+```
+
+---
+
+# 22. Cubehelix Palettes
+
+Highly customizable sequential palettes.
+
+```python
+sns.cubehelix_palette(
+    start=.5,
+    rot=-.75,
+    as_cmap=True
+)
+```
+
+### Compact Syntax
+
+```python
+sns.color_palette(
+    "ch:s=-.2,r=.6",
+    as_cmap=True
+)
+```
+
+---
+
+# 23. Light & Dark Palettes
+
+```python
+sns.light_palette(
+    "seagreen",
+    as_cmap=True
+)
+
+sns.dark_palette(
+    "#69d",
+    reverse=True,
+    as_cmap=True
+)
+```
+
+---
+
+# 24. Diverging Palettes
+
+Used when both low and high extremes matter.
+
+## Built-in
+
+```python
+sns.color_palette("vlag", as_cmap=True)
+sns.color_palette("icefire", as_cmap=True)
+```
+
+---
+
+## Custom Diverging Palette
+
+```python
+sns.diverging_palette(
+    220,
+    20,
+    as_cmap=True
+)
+```
+
+### Dark Center
+
+```python
+sns.diverging_palette(
+    250,
+    30,
+    l=65,
+    center="dark",
+    as_cmap=True
+)
+```
+
+---
+
+# 25. Practical Color Guidelines
+
+## Use Hue For:
+
+* Categories
+* Classes
+* Groups
+
+## Use Luminance For:
+
+* Magnitude
+* Density
+* Importance
+* Heatmaps
+
+## Avoid:
+
+* Too many categories
+* Red-green combinations
+* Overly saturated palettes
+
+---
+
+# 26. Most Important Seaborn Concepts
+
+## Figure-Level Functions
+
+Create complete figures:
+
+* `relplot`
+* `displot`
+* `catplot`
+* `lmplot`
+* `pairplot`
+
+## Axes-Level Functions
+
+Draw on existing axes:
+
+* `scatterplot`
+* `lineplot`
+* `histplot`
+* `regplot`
+* `kdeplot`
+
+---
+
+# 27. Recommended Workflow
+
+## Exploratory Analysis
+
+Use:
+
+* `pairplot`
+* `FacetGrid`
+* `lmplot`
+
+## Statistical Relationships
+
+Use:
+
+* `regplot`
+* `lmplot`
+* `residplot`
+
+## Publication Styling
+
+Use:
+
+* `set_theme`
+* `set_context`
+* `set_style`
+* `despine`
+
+## Numerical Heatmaps
+
+Use:
+
+* Sequential palettes
+* Perceptually uniform colormaps
+
+## Categorical Visuals
+
+Use:
+
+* Qualitative palettes
+* Distinct hues
+* Colorblind-safe options
