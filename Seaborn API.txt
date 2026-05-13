@@ -1,0 +1,284 @@
+# Seaborn API Reference (Structured Documentation)
+
+## 1. Objects Interface
+
+### Plot Object
+
+| Component | Description                                               |
+| --------- | --------------------------------------------------------- |
+| `Plot`    | Declarative interface for specifying statistical graphics |
+
+---
+
+## 2. Mark Objects
+
+### Dot Marks
+
+| Object | Description                                        |
+| ------ | -------------------------------------------------- |
+| `Dot`  | Dot plots or sparse scatterplots                   |
+| `Dots` | Stroke-based dots for better overplotting handling |
+
+### Line Marks
+
+| Object  | Description                                   |
+| ------- | --------------------------------------------- |
+| `Line`  | Connects points sorted along orientation axis |
+| `Lines` | Faster but less flexible multi-line mark      |
+| `Path`  | Connects points in input order                |
+| `Paths` | Faster version for many paths                 |
+| `Dash`  | Oriented segment for each datapoint           |
+| `Range` | Line between min/max values                   |
+
+### Bar Marks
+
+| Object | Description                         |
+| ------ | ----------------------------------- |
+| `Bar`  | Bar between baseline and data value |
+| `Bars` | Faster bar mark for histograms      |
+
+### Fill Marks
+
+| Object | Description                           |
+| ------ | ------------------------------------- |
+| `Area` | Filled region from baseline to values |
+| `Band` | Filled interval between values        |
+
+### Text Marks
+
+| Object | Description                       |
+| ------ | --------------------------------- |
+| `Text` | Annotate or represent data values |
+
+---
+
+## 3. Statistical Transformation Objects
+
+| Object    | Description                             |
+| --------- | --------------------------------------- |
+| `Agg`     | Aggregate data along value axis         |
+| `Est`     | Point estimate with confidence interval |
+| `Count`   | Count observations within groups        |
+| `Hist`    | Histogram binning/counting              |
+| `KDE`     | Kernel density estimation               |
+| `Perc`    | Replace observations with percentiles   |
+| `PolyFit` | Polynomial regression fitting           |
+
+---
+
+## 4. Move Objects
+
+| Object   | Description                           |
+| -------- | ------------------------------------- |
+| `Dodge`  | Separate overlapping marks            |
+| `Jitter` | Random displacement to reduce overlap |
+| `Norm`   | Divisive scaling after aggregation    |
+| `Stack`  | Stack overlapping marks               |
+| `Shift`  | Uniform positional displacement       |
+
+---
+
+## 5. Scale Objects
+
+| Scale        | Description                 |
+| ------------ | --------------------------- |
+| `Boolean`    | Scale for True/False values |
+| `Continuous` | Numeric continuous scale    |
+| `Nominal`    | Categorical scale           |
+| `Temporal`   | Date/time scale             |
+
+---
+
+## 6. Base Classes
+
+| Base Class | Description                          |
+| ---------- | ------------------------------------ |
+| `Mark`     | Base for visual data marks           |
+| `Stat`     | Base for statistical transformations |
+| `Move`     | Base for positional transforms       |
+| `Scale`    | Base for visual property mapping     |
+
+---
+
+# Function Interface
+
+---
+
+## 7. Relational Plots
+
+| Function        | Description                         |
+| --------------- | ----------------------------------- |
+| `relplot()`     | Figure-level relational plotting    |
+| `scatterplot()` | Scatter plot with semantic grouping |
+| `lineplot()`    | Line plot with semantic grouping    |
+
+---
+
+## 8. Distribution Plots
+
+| Function     | Description                       |
+| ------------ | --------------------------------- |
+| `displot()`  | Figure-level distribution plots   |
+| `histplot()` | Univariate/bivariate histograms   |
+| `kdeplot()`  | Kernel density estimation plots   |
+| `ecdfplot()` | Empirical cumulative distribution |
+| `rugplot()`  | Marginal tick marks               |
+| `distplot()` | Deprecated distribution plot      |
+
+---
+
+## 9. Categorical Plots
+
+| Function       | Description                             |
+| -------------- | --------------------------------------- |
+| `catplot()`    | Figure-level categorical plotting       |
+| `stripplot()`  | Scatterplot with jitter                 |
+| `swarmplot()`  | Non-overlapping categorical scatterplot |
+| `boxplot()`    | Box-and-whisker plots                   |
+| `violinplot()` | KDE-based distribution visualization    |
+| `boxenplot()`  | Enhanced box plot for large datasets    |
+| `pointplot()`  | Point estimates with error bars         |
+| `barplot()`    | Aggregated values as bars               |
+| `countplot()`  | Count frequencies by category           |
+
+---
+
+## 10. Regression Plots
+
+| Function      | Description                 |
+| ------------- | --------------------------- |
+| `lmplot()`    | Regression across FacetGrid |
+| `regplot()`   | Linear regression plot      |
+| `residplot()` | Residual analysis plot      |
+
+---
+
+## 11. Matrix Plots
+
+| Function       | Description                    |
+| -------------- | ------------------------------ |
+| `heatmap()`    | Color-encoded matrix           |
+| `clustermap()` | Hierarchical clustered heatmap |
+
+---
+
+# Multi-Plot Grids
+
+---
+
+## 12. Facet Grids
+
+| Component   | Description                   |
+| ----------- | ----------------------------- |
+| `FacetGrid` | Conditional relationship grid |
+
+---
+
+## 13. Pair Grids
+
+| Component    | Description                        |
+| ------------ | ---------------------------------- |
+| `pairplot()` | Pairwise dataset relationships     |
+| `PairGrid`   | Customizable pairwise subplot grid |
+
+---
+
+## 14. Joint Grids
+
+| Component     | Description                    |
+| ------------- | ------------------------------ |
+| `jointplot()` | Bivariate + marginal plots     |
+| `JointGrid`   | Underlying joint plotting grid |
+
+---
+
+# Theming & Styling
+
+---
+
+## 15. Theme Functions
+
+| Function             | Description                       |
+| -------------------- | --------------------------------- |
+| `set_theme()`        | Global seaborn/matplotlib theme   |
+| `axes_style()`       | Retrieve style parameters         |
+| `set_style()`        | Set plot style                    |
+| `plotting_context()` | Retrieve scaling context          |
+| `set_context()`      | Set scaling context               |
+| `set_color_codes()`  | Modify matplotlib color shorthand |
+| `reset_defaults()`   | Restore default RC params         |
+| `reset_orig()`       | Restore original RC params        |
+| `set()`              | Alias for `set_theme()`           |
+
+---
+
+# Color Palettes
+
+---
+
+## 16. Palette Functions
+
+| Function              | Description                           |
+| --------------------- | ------------------------------------- |
+| `set_palette()`       | Set matplotlib color cycle            |
+| `color_palette()`     | Generate palette/colormap             |
+| `husl_palette()`      | Constant lightness/saturation palette |
+| `hls_palette()`       | HLS color space palette               |
+| `cubehelix_palette()` | Sequential cubehelix palette          |
+| `dark_palette()`      | Dark-to-color sequential palette      |
+| `light_palette()`     | Light-to-color sequential palette     |
+| `diverging_palette()` | Diverging HUSL palette                |
+| `blend_palette()`     | Blend multiple colors                 |
+| `xkcd_palette()`      | XKCD survey color names               |
+| `crayon_palette()`    | Crayola crayon colors                 |
+| `mpl_palette()`       | Matplotlib registry palette           |
+
+---
+
+# Palette Widgets
+
+---
+
+## 17. Interactive Palette Tools
+
+| Widget                         | Description                   |
+| ------------------------------ | ----------------------------- |
+| `choose_colorbrewer_palette()` | Select ColorBrewer palette    |
+| `choose_cubehelix_palette()`   | Interactive cubehelix builder |
+| `choose_light_palette()`       | Interactive light palette     |
+| `choose_dark_palette()`        | Interactive dark palette      |
+| `choose_diverging_palette()`   | Interactive diverging palette |
+
+---
+
+# Utility Functions
+
+---
+
+## 18. Utility Helpers
+
+| Function              | Description             |
+| --------------------- | ----------------------- |
+| `despine()`           | Remove top/right spines |
+| `move_legend()`       | Relocate plot legend    |
+| `saturate()`          | Fully saturate a color  |
+| `desaturate()`        | Reduce saturation       |
+| `set_hls_values()`    | Modify HLS channels     |
+| `load_dataset()`      | Load example dataset    |
+| `get_dataset_names()` | List available datasets |
+| `get_data_home()`     | Dataset cache directory |
+
+---
+
+# Quick Category Summary
+
+| Category               | Key Purpose                        |
+| ---------------------- | ---------------------------------- |
+| Relational Plots       | Relationships between variables    |
+| Distribution Plots     | Data distribution analysis         |
+| Categorical Plots      | Compare categories                 |
+| Regression Plots       | Statistical modeling               |
+| Matrix Plots           | Correlation & matrix visualization |
+| Facet/Pair/Joint Grids | Multi-plot structured layouts      |
+| Themes & Palettes      | Visual customization               |
+| Objects Interface      | Declarative visualization API      |
