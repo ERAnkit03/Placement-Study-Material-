@@ -1,0 +1,526 @@
+# 4. Discrete Mathematics for AI/ML Development
+
+Discrete Mathematics is the mathematics of **countable and logical structures**.
+
+It is extremely important in:
+
+* Machine Learning
+* Algorithms
+* Graph Neural Networks
+* Search Engines
+* LLMs
+* Recommendation Systems
+* Computer Science Foundations
+
+Unlike calculus (continuous math), discrete math works with:
+
+* separate values
+* logic
+* structures
+* graphs
+* combinations
+
+---
+
+# 4.1 Sets
+
+## Definition
+
+A set is a collection of unique elements.
+
+Example:
+
+A = {1,2,3,4}
+
+---
+
+# Important Set Operations
+
+| Operation    | Meaning                |
+| ------------ | ---------------------- |
+| Union        | Combine sets           |
+| Intersection | Common elements        |
+| Difference   | Remove elements        |
+| Subset       | One set inside another |
+
+---
+
+# Union
+
+Combines all elements.
+
+Example:
+
+A = {1,2,3}
+
+B = {3,4,5}
+
+Union:
+
+A U B = {1,2,3,4,5}
+
+---
+
+# Intersection
+
+Common elements.
+
+
+A ^ B = {3}
+
+
+---
+
+# 4.2 Relations
+
+## Definition
+
+A relation connects elements between sets.
+
+Example:
+
+If:
+
+ A = students
+ B = courses
+
+Relation:
+“student enrolled in course”
+
+---
+
+# Mathematical Representation
+
+
+R = {(a,b)}
+
+
+where:
+a relates to b
+
+---
+
+# AI/ML Usage
+
+Used in:
+
+* knowledge graphs
+* graph databases
+* recommendation systems
+* relational learning
+
+Example:
+Netflix recommendation:
+(User → watched → Movie)
+
+---
+
+# 4.3 Functions
+
+Functions map input → output.
+
+---
+
+# Definition
+
+A function assigns exactly one output to each input.
+
+
+f(x)=y
+
+
+---
+
+# Example
+
+f(x)=2x+3
+
+If:
+x = 2
+
+Then:
+f(2)=7
+
+---
+
+# AI/ML Usage
+
+Machine learning models are functions.
+
+Input:
+
+* image
+* text
+* audio
+
+Output:
+
+* prediction
+
+Example:
+Image → “Cat”
+
+---
+
+# 4.4 Logic
+
+Logic is the foundation of reasoning.
+
+AI systems heavily depend on logical rules.
+
+---
+
+# Basic Logical Operators
+
+| Operator | Meaning           |
+| -------- | ----------------- |
+| AND      | Both true         |
+| OR       | At least one true |
+| NOT      | Opposite          |
+| XOR      | Exactly one true  |
+
+
+---
+
+# AI/ML Usage
+
+Used in:
+
+* rule-based AI
+* search systems
+* symbolic AI
+* decision making
+
+---
+
+# 4.5 Boolean Algebra
+
+Boolean algebra works with binary values:
+
+* 0
+* 1
+* True
+* False
+
+Modern computers are built on Boolean logic.
+
+---
+
+# Boolean Operations
+
+| Operation | Example     |
+| --------- | ----------- |
+| AND       | 1 AND 1 = 1 |
+| OR        | 1 OR 0 = 1  |
+| NOT       | NOT 1 = 0   |
+
+---
+
+# AI/ML Usage
+
+Used in:
+
+* digital circuits
+* neural network activations
+* search filtering
+* logical inference
+
+Example:
+Google search filters use Boolean logic.
+
+---
+
+# 4.6 Graph Theory
+
+Graph theory studies connections.
+
+Very important in modern AI.
+
+---
+
+# Definition
+
+A graph contains:
+
+* Nodes (vertices)
+* Edges (connections)
+
+Example:
+
+* People = nodes
+* Friendships = edges
+
+---
+
+# Graph Representation
+
+
+G=(V,E)
+
+where:
+
+* V = vertices
+* E = edges
+
+---
+
+# Types of Graphs
+
+| Type             | Meaning              |
+| ---------------- | -------------------- |
+| Directed Graph   | edges have direction |
+| Undirected Graph | no direction         |
+| Weighted Graph   | edges have weights   |
+
+---
+
+# AI/ML Usage
+
+Graphs are used in:
+
+* social networks
+* recommendation systems
+* knowledge graphs
+* Graph Neural Networks (GNNs)
+
+Example:
+Facebook friendship network.
+
+---
+
+# 4.7 Trees
+
+A tree is a special graph without cycles.
+
+---
+
+# Structure
+
+* Root node
+* Parent node
+* Child node
+* Leaf node
+
+---
+
+# Example
+
+```
+        AI
+       /  \
+     ML   DL
+```
+
+---
+
+# AI/ML Usage
+
+Used in:
+
+* Decision Trees
+* Random Forest
+* File systems
+* Search algorithms
+
+---
+
+# Decision Tree Example
+
+If:
+
+* income > 50k
+* age > 30
+
+Then:
+approve loan
+
+This is tree-based decision making.
+
+---
+
+# 4.8 Combinatorics
+
+Combinatorics studies counting and arrangements.
+
+Very important in probability and ML.
+
+---
+
+# A. Permutations
+
+Order matters.
+
+Formula:
+
+P(n,r)= n! / (n-r)!
+
+---
+
+# Example
+
+Arrange 3 letters from A,B,C,D.
+
+---
+
+# B. Combinations
+
+Order does NOT matter.
+
+Formula:
+
+C(n,r)=n! / r! (n-r)!
+
+---
+
+# AI/ML Usage
+
+Used in:
+
+* feature selection
+* probability
+* hyperparameter combinations
+* search spaces
+
+---
+
+# 4.9 Recurrence Relations
+
+Recurrence relations define sequences recursively.
+
+Current value depends on previous values.
+
+---
+
+# Example
+
+Fibonacci sequence:
+
+F_n=F_{n-1}+F_{n-2}
+
+---
+
+# AI/ML Usage
+
+Used in:
+
+* dynamic programming
+* recurrent neural networks
+* sequence modeling
+* algorithm analysis
+
+---
+
+# 4.10 Complexity Basics
+
+Complexity measures efficiency.
+
+Very important for:
+
+* scalable AI systems
+* optimization
+* production ML
+
+---
+
+# A. Big-O Notation
+
+## Definition
+
+Big-O describes algorithm growth rate.
+
+---
+
+# Common Complexities
+
+| Complexity | Meaning     |
+| ---------- | ----------- |
+| O(1)       | Constant    |
+| O(log n)   | Logarithmic |
+| O(n)       | Linear      |
+| O(n²)      | Quadratic   |
+| O(2ⁿ)      | Exponential |
+
+---
+
+# Example
+
+Searching in list:
+
+* linear search → O(n)
+* binary search → O(log n)
+
+---
+
+# AI/ML Usage
+
+Used in:
+
+* model optimization
+* inference speed
+* database search
+* vector retrieval
+
+---
+
+# B. Time Complexity
+
+Measures execution time growth.
+
+---
+
+# Example
+
+Loop through n items:
+
+```python
+for i in range(n):
+    print(i)
+```
+
+Complexity:
+
+[
+O(n)
+]
+
+---
+
+# AI Usage
+
+Important in:
+
+* training speed
+* inference latency
+* large-scale systems
+
+---
+
+# C. Space Complexity
+
+Measures memory usage.
+
+---
+
+# Example
+
+Storing n elements:
+
+[
+O(n)
+]
+
+---
+
+# AI/ML Usage
+
+Critical in:
+
+* GPU memory
+* LLM deployment
+* embeddings
+* transformers
+
+Example:
+Large language models require huge memory.
+
+---
