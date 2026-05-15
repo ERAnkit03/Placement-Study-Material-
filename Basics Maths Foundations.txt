@@ -1,0 +1,289 @@
+Basic Mathematics Foundation for AI/ML Development
+
+
+
+1.1 Arithmetic
+
+
+A. Numbers
+Definition -
+Numbers are values used to count, measure, and represent data.
+
+
+
+B. Ratios
+Definition-
+A ratio compares two quantities.
+
+Formula:
+Ratio= a/b
+
+AI/ML Usage :
+
+Ratios are heavily used in:
+train/test split
+class imbalance
+precision & recall
+
+Example:
+
+90 spam emails
+10 normal emails
+
+Dataset ratio = 9:1
+
+This imbalance affects model training.
+	
+​
+
+C. Proportions
+Definition-
+A proportion says two ratios are equal.
+
+Formula:
+a/b =c/d
+	​
+AI/ML Usage :
+Used in:
+normalization
+probability scaling
+learning rate adjustments
+
+
+
+
+D. Scientific Notation
+Definition-
+Scientific notation represents very large or very small numbers compactly.
+
+Formula:
+a×10^n
+
+where:
+a = coefficient
+n = exponent
+
+AI/ML Usage:
+Deep learning often uses:
+tiny gradients
+huge datasets
+GPU calculations
+
+
+
+
+
+1.2 Fractions, Decimals & Percentages
+
+
+
+A. Fractions
+Definition-
+Fractions represent parts of something.
+
+Formula: a/b
+
+
+
+
+B. Decimals
+Definition-
+Decimals are fractional numbers written using a decimal point.
+
+Examples:
+0.5
+0.75
+3.14
+
+
+
+
+C. Percentages
+Definition-
+Percentage means “per hundred”.
+
+Formula:
+
+Percentage= part / whole * 100
+
+
+
+
+1.3 Exponents & Logarithms
+
+Very important in:
+neural networks
+loss functions
+softmax
+information theory
+
+
+
+
+A. Exponents
+Definition-
+An exponent means repeated multiplication.
+
+Formula:a^n
+
+means:
+a multiplied by itself n times.
+
+
+
+
+B. Logarithms
+Definition:
+
+A logarithm asks:
+“To what power should the base be raised?”
+
+Formula: logb(x) = y == b^y = x
+
+Important Log Rule : logb(xy) = logb x + logb y
+
+AI/ML Usage of Logarithms
+
+Logs are critical in:
+
+cross entropy loss
+information theory
+likelihood estimation
+
+Example:
+Neural networks use logarithms in classification loss.
+
+
+
+
+1.4 Algebra Basics
+
+
+
+
+A. Equations
+Definition-
+An equation says two expressions are equal.
+
+Formula:
+x+2=5
+
+
+
+
+B. Inequalities
+Definition-
+Inequalities compare values.
+
+
+
+
+C. Polynomials
+Definition-
+Expressions with variables and powers.
+
+Example: x^2 + 3x + 2
+
+
+
+
+1.5 Functions
+
+Definition-
+A function takes an input and produces an output.
+
+Formula:
+f(x)=y
+
+
+Types of Functions :
+
+
+A. Linear Functions
+Straight-line relationships.
+y=mx+b
+
+
+B. Quadratic Functions
+Curved relationships.
+y = ax^2 + bx + c
+
+
+C. Exponential Functions
+Fast growth.
+y=e^x
+Used in:
+softmax
+probability
+
+
+D. Logarithmic Functions
+Slow growth.
+y=log(x)
+
+
+
+
+1.6 Graphs & Coordinate Geometry
+
+Used for:
+data visualization
+optimization
+plotting functions
+
+
+
+
+A. Cartesian Plane
+2D coordinate system.
+Point format : (x,y)
+
+
+B. Lines & Slopes
+Slope shows steepness.
+Formula: m = y2 -y1 / x2 - x1
+	​
+
+C. Distance Formula
+Distance between two points:
+formula : /(x2 - x1)^2 + (y2 - y1)^2
+AI Usage
+
+Used in:
+KNN
+clustering
+embeddings
+vector similarity
+		​
+
+
+
+
+1.7 Trigonometry Basics
+
+Important in:
+transformers
+positional encoding
+signal processing
+Fourier transforms
+
+
+
+A. Sine, Cosine, Tangent
+These describe angles and waves.
+
+
+Sine Function
+sin(θ)=Opposite/Hypotenuse
+
+
+Cosine Function
+cos(θ)=Adjacent/Hypotenuse
+
+
+Tangent Function
+tan(θ)=Opposite/Adjacent
+	​
+	​
+
+	​
