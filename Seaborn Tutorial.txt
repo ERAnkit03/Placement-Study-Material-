@@ -1,0 +1,244 @@
+Seaborn Library
+
+
+
+#Basic Example
+
+import seaborn as sns
+
+# Apply theme
+sns.set_theme()
+
+# Load dataset
+tips = sns.load_dataset("tips")
+
+# Create graph
+sns.relplot(
+    data=tips,
+    x="total_bill",
+    y="tip"
+)
+
+
+
+#Seaborn Concepts / Parameters
+
+
+sns.relplot(
+    data=tips,
+    x="total_bill",
+    y="tip",
+    hue="smoker",
+    style="smoker",
+    size="size",
+    col="time"
+)
+
+
+
+
+# Statistical Estimation
+
+sns.relplot(
+    data=tips,
+    kind="line",  #line plot
+    x="size",
+    y="total_bill"
+)
+
+
+
+#Statistical Plot
+
+sns.relplot(
+    data=tips,
+    x="size",
+    y="total_bill"
+)
+
+
+#Regression plot
+
+sns.lmplot(
+    data=tips,
+    x="size",
+    y="total_bill"
+)
+
+#Distibution Plot
+
+sns.displot(
+    data=tips,
+    x="size",
+    y="total_bill"
+)
+
+#Categorical Plot
+
+sns.catplot(
+    data=tips,
+    x="size",
+    y="total_bill"
+)
+
+#swarm plot
+
+sns.catplot(
+    data=tips,
+    x="size",
+    y="total_bill",
+    kind="swarm"
+)
+
+#Violin Plot
+
+sns.catplot(
+    data=tips,
+    x="size",
+    y="total_bill",
+    kind="violin"
+)
+
+
+#Joint Plot
+
+penguins = sns.load_dataset("penguins")
+
+sns.jointplot(
+    data=penguins,
+    x="flipper_length_mm",
+    y="bill_length_mm"
+)
+
+
+#Pair plot
+
+sns.pairplot(
+    data=penguins
+)
+
+
+
+
+# Distribution Plots
+
+
+#1.Histogram — histplot()
+
+sns.histplot(
+    data=penguins,
+    x="flipper_length_mm"
+)
+
+
+#2.KDE Plot
+
+sns.kdeplot(
+    data=penguins,
+    x="flipper_length_mm"
+)
+
+
+
+
+# Long Form Data
+
+
+import seaborn as sns
+
+flights = sns.load_dataset("flights")
+
+print(flights.head())
+
+
+
+sns.relplot(
+    data=flights,
+    x="year",
+    y="passengers",
+    hue="month",
+    kind="line"
+)
+
+
+
+
+# Wide Form Data
+
+flights_wide = flights.pivot(
+    index="year",
+    columns="month",
+    values="passengers"
+)
+
+sns.relplot(
+    data=flights_wide,
+    kind="line"
+)
+
+
+#Messy Data
+
+# anagrams_long = anagrams.melt(
+#     id_vars=["subidr", "attnr"],
+#     var_name="solutions",
+#     value_name="score"
+# )
+
+# sns.catplot(
+#     data=anagrams_long,
+#     x="solutions",
+#     y="score",
+#     hue="attnr",
+#     kind="point"
+# )
+
+
+
+
+
+
+
+#Other Data Structures Accepted by Seaborn
+
+
+#1. Pandas DataFrame
+
+import pandas as pd
+
+sns.relplot(
+    data=flights,
+    x="year",
+    y="passengers"
+)
+
+
+#2. Python Dictionary
+
+data = {
+    "x": [1,2,3],
+    "y": [4,5,6]
+}
+
+sns.relplot(
+    x=data["x"],
+    y=data["y"]
+)
+
+
+#3. NumPy Arrays
+
+import numpy as np
+
+x = np.array([1,2,3])
+y = np.array([4,5,6])
+
+sns.relplot(x=x, y=y)
+
+
+#4. Python Lists
+
+x = [1,2,3]
+y = [4,5,6]
+
+sns.relplot(x=x, y=y)
