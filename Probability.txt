@@ -1,0 +1,305 @@
+# Probability for AI/ML
+
+
+# What is Probability?
+
+Definition:
+Probability measures the chance that an event will happen.
+
+Formula:
+
+P(Event)=
+Favorable Outcomes / Total Outcomes
+	​
+
+Probability values are always between 0 and 1.
+
+0 → Impossible
+1 → Certain
+0.5 → 50% chance
+
+2. Sample Space
+Definition
+
+Set of all possible outcomes.
+
+Example
+S={1,2,3,4,5,6}
+
+(Dice Roll)
+
+3. Event
+Definition
+
+A specific outcome or group of outcomes.
+
+Example
+
+Even Numbers:
+
+{2,4,6}
+
+# Random Variables :
+
+
+A Random Variable (RV) is a variable that stores the numerical outcome of a random experiment.
+A random variable converts random outcomes into numbers.
+
+
+Types of Random Variables:
+
+1. Discrete Random Variable - Takes countable values.
+
+2. Continuous Random Variable - Takes any value within a range.
+
+
+
+# Probability Rules for AI/ML
+
+1. Probability Range Rule :
+
+Probability is always between 0 and 1.
+
+0≤P(A)≤1
+
+Where:
+
+0 = Impossible event
+1 = Certain event
+
+
+2. Total Probability Rule
+
+The probability of all possible outcomes together is 1.
+
+
+3. Complement Rule
+
+The probability of an event not happening.
+
+P(A^c)=1−P(A)
+
+4. Addition Rule
+
+Used when finding the probability of A OR B.
+
+Case 1: Mutually Exclusive Events
+
+Events cannot happen together.
+
+Example:
+
+Rolling a 1
+Rolling a 6
+
+Formula:
+
+P(A∪B)=P(A)+P(B)
+
+
+Case 2: Non-Mutually Exclusive Events
+
+Events can happen together.
+
+Formula:
+
+P(A∪B)=P(A)+P(B)−P(A∩B)
+
+
+5. Multiplication Rule
+
+Used for A AND B.
+
+Independent Events
+
+One event does not affect the other.
+
+Formula:
+
+P(A∩B)=P(A)×P(B)
+
+
+6. Conditional Probability Rule
+
+Used when one event depends on another.
+
+P(A∣B)=P(A∩B)​ / P(B)
+
+
+7. Bayes' Rule (Very Important for AI/ML)
+
+Bayes' Theorem updates probability when new information arrives.
+
+P(A∣B)= P(B∣A)P(A)​ / P(B)
+
+
+
+# Conditional Probability
+
+Conditional Probability is the probability of an event happening given that another event has already happened.
+
+P(A∣B)= P(A∩B) / P(B)
+
+
+
+# Joint Probability and Marginal Probability
+
+1. Joint Probability
+Joint Probability is the probability that two events happen together.
+
+P(A∩B)=P(A∣B)P(B)
+
+
+2. Marginal Probability
+Marginal Probability is the probability of a single event regardless of other events.
+P(A)   or   P(B)​
+
+
+
+
+
+# Conditional Independence
+
+Two things may look related, but once we know a third thing, they no longer affect each other.
+
+Simple Example
+
+Imagine:
+
+Ice cream sales increase 🍦
+People wear sunglasses 😎
+
+These two seem related.
+
+But the real reason is:
+
+☀️ Hot weather
+
+Once we know the weather is hot:
+
+Ice cream sales happen because of hot weather.
+Sunglasses are worn because of hot weather.
+
+Now, knowing ice cream sales doesn't tell us anything extra about sunglasses.
+
+So:
+
+Ice Cream Sales ⟂ Sunglasses | Hot Weather
+
+
+
+# Bayes' Theorem
+Bayes' Theorem helps us update a probability when we get new information.
+
+
+P(A∣B)= P(B∣A)P(A) / P(B)
+	​
+
+#Independent Events
+Two events are independent if the occurrence of one event does not affect the probability of the other event.
+
+P(A∩B)=P(A)P(B)
+
+
+
+# What is a Probability Distribution?
+
+👉 What values a random variable can take and the probability of each value.
+
+In simple words:
+
+It is a table that shows all possible outcomes and their probabilities
+
+
+
+# Expectation - E(X)
+
+Expectation (or Expected Value) is the average value we expect in the long run if an experiment is repeated many times.
+
+Simple Definition
+
+👉 Expectation = Long-term average outcome
+
+
+# Variance and Standard Deviation
+
+
+1. Variance
+Simple Definition
+
+Variance measures how far values are spread from the mean (average).
+
+Simple Meaning
+Small Variance → Values are close to the mean.
+Large Variance → Values are far from the mean.
+
+
+2. Standard Deviation
+Simple Definition
+
+Standard Deviation (SD) is the square root of variance.
+
+Formula:
+
+σ=
+Var(X)
+	​
+
+
+# Covariance and Correlation
+
+1. Covariance
+Simple Definition
+
+Covariance measures whether two variables move together.
+
+Simple Meaning
+If one increases and the other increases → Positive Covariance
+If one increases and the other decreases → Negative Covariance
+If there is no clear relationship → Covariance ≈ 0
+
+
+2. Correlation
+Simple Definition
+
+Correlation measures both the direction and strength of the relationship between two variables.
+
+Correlation Formula
+
+Corr(X,Y)=Cov(X,Y) / σX σY
+
+Where:
+
+Cov(X,Y) = Covariance
+σX = Standard deviation of X
+σY = Standard deviation of Y
+
+Correlation Range
+
+Correlation always lies between:
+
+−1≤r≤1
+
+
+
+# Law of Large Numbers (LLN) — Simple AI/ML Explanation
+What is the Law of Large Numbers?
+
+The Law of Large Numbers says:
+
+👉 As we repeat an experiment many times, the average result gets closer to the expected value (true average).
+
+
+
+# Central Limit Theorem (CLT)
+If you take many random samples from any population and calculate their averages, those averages will follow a Normal (Bell-Shaped) Distribution when the sample size is large enough.
+
+
+
+Probability: Given the model/parameters, what is the chance of observing the data?
+
+Likelihood: Given the observed data, how plausible are different models/parameters?
+
+Memory Trick
+Probability = Model → Data
+Likelihood = Data → Model
