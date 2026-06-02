@@ -1,0 +1,327 @@
+
+==================================================
+      PROBABILITY FOR AI/ML - STRUCTURED CHEAT SHEET
+==================================================
+
+LEARNING FLOW
+Probability
+│
+├─ Sample Space
+├─ Events
+├─ Random Variables
+├─ Probability Rules
+├─ Conditional Probability
+├─ Bayes' Theorem
+├─ Joint & Marginal Probability
+├─ Independence
+├─ Conditional Independence
+├─ Probability Distributions
+├─ Expectation (Mean)
+├─ Variance & Standard Deviation
+├─ Covariance & Correlation
+├─ Law of Large Numbers
+├─ Central Limit Theorem
+└─ Likelihood
+
+--------------------------------------------------
+1. PROBABILITY
+--------------------------------------------------
+Definition:
+Chance that an event occurs.
+
+Formula:
+P(A) = Favorable Outcomes / Total Outcomes
+
+Example:
+Coin Toss
+P(Head) = 1/2 = 0.5
+
+Memory:
+Probability = Chance
+
+--------------------------------------------------
+2. SAMPLE SPACE
+--------------------------------------------------
+Definition:
+All possible outcomes.
+
+Example:
+Dice:
+S = {1,2,3,4,5,6}
+
+Memory:
+Sample Space = All Possibilities
+
+--------------------------------------------------
+3. EVENT
+--------------------------------------------------
+Definition:
+Outcome or set of outcomes of interest.
+
+Example:
+Even Numbers = {2,4,6}
+
+Memory:
+Event = What we care about
+
+--------------------------------------------------
+4. RANDOM VARIABLE
+--------------------------------------------------
+Definition:
+Converts outcomes into numbers.
+
+Example:
+Head = 1
+Tail = 0
+
+Memory:
+Outcome → Number
+
+--------------------------------------------------
+5. PROBABILITY RULES
+--------------------------------------------------
+
+Complement:
+P(Not A) = 1 - P(A)
+
+Example:
+P(Rain)=0.7
+P(No Rain)=0.3
+
+Addition Rule (OR):
+P(A OR B)
+
+Memory:
+OR = Addition
+
+Multiplication Rule (AND):
+P(A AND B)
+
+Memory:
+AND = Multiplication
+
+--------------------------------------------------
+6. CONDITIONAL PROBABILITY
+--------------------------------------------------
+Definition:
+Probability of A given B.
+
+Formula:
+P(A|B)
+
+Example:
+Probability of passing given studying.
+
+Memory:
+"Given" → Conditional Probability
+
+--------------------------------------------------
+7. JOINT PROBABILITY
+--------------------------------------------------
+Definition:
+Probability of A AND B together.
+
+Example:
+Head AND Roll 6
+
+Memory:
+Joint = AND
+
+--------------------------------------------------
+8. MARGINAL PROBABILITY
+--------------------------------------------------
+Definition:
+Probability of one event only.
+
+Example:
+P(Spam)
+
+Memory:
+Marginal = Single Event
+
+--------------------------------------------------
+9. INDEPENDENT EVENTS
+--------------------------------------------------
+Definition:
+One event does not affect another.
+
+Example:
+Coin Toss and Dice Roll
+
+Memory:
+Independent = No Influence
+
+--------------------------------------------------
+10. CONDITIONAL INDEPENDENCE
+--------------------------------------------------
+Definition:
+Two events become independent after
+knowing a third event.
+
+Example:
+Wet Roads and Umbrellas given Rain
+
+Memory:
+Known Cause → No Extra Influence
+
+--------------------------------------------------
+11. BAYES' THEOREM
+--------------------------------------------------
+Definition:
+Updates probability using new evidence.
+
+Example:
+Spam Detection
+Medical Diagnosis
+
+Memory:
+Old Belief + Evidence = New Belief
+
+--------------------------------------------------
+12. PROBABILITY DISTRIBUTION
+--------------------------------------------------
+Definition:
+Lists possible values and their probabilities.
+
+Example:
+Dice Distribution:
+1→1/6
+2→1/6
+...
+6→1/6
+
+Memory:
+Value + Probability Table
+
+--------------------------------------------------
+13. EXPECTATION (MEAN)
+--------------------------------------------------
+Definition:
+Long-run average value.
+
+Example:
+Fair Dice Mean = 3.5
+
+Memory:
+Expectation = Average
+
+--------------------------------------------------
+14. VARIANCE
+--------------------------------------------------
+Definition:
+Measures spread around the mean.
+
+Example:
+Large Variance = Data widely spread
+
+Memory:
+Variance = Spread
+
+--------------------------------------------------
+15. STANDARD DEVIATION
+--------------------------------------------------
+Definition:
+Square root of variance.
+
+Example:
+Small SD = Data close to mean
+
+Memory:
+Easy-to-understand Spread
+
+--------------------------------------------------
+16. COVARIANCE
+--------------------------------------------------
+Definition:
+Measures whether two variables move together.
+
+Example:
+Study Hours ↑
+Marks ↑
+
+Memory:
+Move Together
+
+--------------------------------------------------
+17. CORRELATION
+--------------------------------------------------
+Definition:
+Strength + Direction of relationship.
+
+Range:
+-1 to +1
+
+Memory:
+Relationship Strength
+
+--------------------------------------------------
+18. LAW OF LARGE NUMBERS (LLN)
+--------------------------------------------------
+Definition:
+More data → Average approaches truth.
+
+Example:
+1000 Coin Tosses → Heads ≈ 50%
+
+Memory:
+More Data → Better Average
+
+--------------------------------------------------
+19. CENTRAL LIMIT THEOREM (CLT)
+--------------------------------------------------
+Definition:
+Sample means become normally distributed.
+
+Example:
+Many Sample Means → Bell Curve
+
+Memory:
+Sample Means → Normal Distribution
+
+--------------------------------------------------
+20. LIKELIHOOD
+--------------------------------------------------
+Definition:
+Given data, how likely is a model?
+
+Example:
+10 Heads → Estimate coin bias
+
+Memory:
+Data → Model
+
+--------------------------------------------------
+21. PROBABILITY vs LIKELIHOOD
+--------------------------------------------------
+
+Probability:
+Model → Data
+
+Likelihood:
+Data → Model
+
+Example:
+Fair Coin → Probability of Head
+
+10 Heads Observed → Estimate Coin Bias
+
+--------------------------------------------------
+FINAL 1-MINUTE REVISION
+--------------------------------------------------
+
+Probability          = Chance
+Conditional Prob.    = Given
+Bayes                = Update Belief
+Joint                = AND
+Marginal             = Single Event
+Independent          = No Influence
+Expectation          = Average
+Variance             = Spread
+Std Deviation        = Easy Spread
+Covariance           = Move Together
+Correlation          = Relationship Strength
+LLN                  = More Data, Better Average
+CLT                  = Sample Means Become Normal
+Likelihood           = Data → Model
+
+==================================================
