@@ -1,0 +1,443 @@
+=========================================================
+      CALCULUS FOR AI/ML - COMPLETE CHEAT SHEET
+=========================================================
+
+Calculus is the mathematics of change and optimization.
+It helps Machine Learning models learn patterns and minimize errors.
+
+=========================================================
+1. LIMITS
+=========================================================
+
+Definition:
+A limit tells us what value a function approaches when x gets
+very close to a particular value.
+
+Notation:
+lim f(x)
+
+Example:
+lim(x→2) (x+3) = 5
+
+Simple Explanation:
+It tells where a function is heading.
+
+AI/ML Use:
+Foundation of derivatives and optimization.
+
+---------------------------------------------------------
+
+2. CONTINUITY
+---------------------------------------------------------
+
+Definition:
+A function is continuous if there are no breaks, jumps,
+or holes in its graph.
+
+Example:
+f(x) = x²
+
+Simple Explanation:
+You can draw it without lifting your pen.
+
+AI/ML Use:
+Continuous functions are easier to optimize.
+
+---------------------------------------------------------
+
+3. DIFFERENTIATION
+---------------------------------------------------------
+
+Definition:
+Measures how fast a function changes.
+
+Formula:
+f'(x) = df/dx
+
+Example:
+f(x) = x²
+
+f'(x) = 2x
+
+At x = 3:
+f'(3) = 6
+
+Simple Explanation:
+Like a speedometer showing speed.
+
+AI/ML Use:
+Used to update weights in ML models.
+
+---------------------------------------------------------
+
+4. PARTIAL DERIVATIVES
+---------------------------------------------------------
+
+Definition:
+Derivative with respect to one variable while keeping
+other variables constant.
+
+Example:
+f(x,y) = x² + y²
+
+∂f/∂x = 2x
+∂f/∂y = 2y
+
+Simple Explanation:
+Change one feature at a time.
+
+AI/ML Use:
+Neural networks contain many variables.
+
+---------------------------------------------------------
+
+5. MULTIVARIABLE CALCULUS
+---------------------------------------------------------
+
+Definition:
+Calculus involving more than one variable.
+
+Example:
+f(x,y) = x² + y²
+
+Simple Explanation:
+Output depends on multiple inputs.
+
+AI/ML Use:
+Most ML models have multiple features.
+
+---------------------------------------------------------
+
+6. CHAIN RULE
+---------------------------------------------------------
+
+Definition:
+Used when one function is inside another.
+
+Formula:
+dy/dx = (dy/du) × (du/dx)
+
+Example:
+y = (x²+1)³
+
+dy/dx = 3(x²+1)²(2x)
+
+Simple Explanation:
+Derivative of outside × derivative of inside.
+
+AI/ML Use:
+Backpropagation is based on Chain Rule.
+
+IMPORTANT ⭐⭐⭐⭐⭐
+
+---------------------------------------------------------
+
+7. GRADIENT
+---------------------------------------------------------
+
+Definition:
+A vector containing all partial derivatives.
+
+Formula:
+∇f = [∂f/∂x, ∂f/∂y]
+
+Example:
+f(x,y)=x²+y²
+
+∇f=(2x,2y)
+
+Simple Explanation:
+Shows direction of maximum increase.
+
+AI/ML Use:
+Used in Gradient Descent.
+
+IMPORTANT ⭐⭐⭐⭐⭐
+
+---------------------------------------------------------
+
+8. JACOBIAN MATRIX
+---------------------------------------------------------
+
+Definition:
+Matrix of first-order partial derivatives.
+
+Example:
+
+f(x,y) = [x², y²]
+
+Jacobian:
+
+[2x   0 ]
+[0   2y]
+
+Simple Explanation:
+Gradient for vector functions.
+
+AI/ML Use:
+Used in Deep Learning transformations.
+
+---------------------------------------------------------
+
+9. HESSIAN MATRIX
+---------------------------------------------------------
+
+Definition:
+Matrix of second-order partial derivatives.
+
+Example:
+
+f(x,y)=x²+y²
+
+Hessian:
+
+[2 0]
+[0 2]
+
+Simple Explanation:
+Measures curvature of a function.
+
+AI/ML Use:
+Advanced optimization algorithms.
+
+---------------------------------------------------------
+
+10. DIRECTIONAL DERIVATIVES
+---------------------------------------------------------
+
+Definition:
+Rate of change in a particular direction.
+
+Example:
+Walking uphill in different directions gives
+different slopes.
+
+Simple Explanation:
+Derivative in a chosen direction.
+
+AI/ML Use:
+Understanding optimization paths.
+
+---------------------------------------------------------
+
+11. TAYLOR SERIES
+---------------------------------------------------------
+
+Definition:
+Approximates complicated functions using polynomials.
+
+Formula:
+
+f(x)=f(a)+f'(a)(x-a)
+    +f''(a)(x-a)²/2!
+    + ...
+
+Example:
+
+e^x ≈ 1 + x + x²/2
+
+Simple Explanation:
+Complex curve → simple polynomial.
+
+AI/ML Use:
+Numerical optimization and approximations.
+
+---------------------------------------------------------
+
+12. INTEGRATION
+---------------------------------------------------------
+
+Definition:
+Finding area under a curve.
+
+Formula:
+∫f(x)dx
+
+Example:
+∫x dx = x²/2 + C
+
+Simple Explanation:
+Adding many tiny pieces together.
+
+AI/ML Use:
+Probability and statistics.
+
+---------------------------------------------------------
+
+13. OPTIMIZATION BASICS
+---------------------------------------------------------
+
+Definition:
+Finding minimum or maximum value.
+
+Example:
+Loss = (Prediction - Actual)²
+
+Goal:
+Minimize Loss
+
+Simple Explanation:
+Finding lowest point of a valley.
+
+AI/ML Use:
+Training ML models.
+
+IMPORTANT ⭐⭐⭐⭐⭐
+
+---------------------------------------------------------
+
+14. GRADIENT DESCENT
+---------------------------------------------------------
+
+Definition:
+Optimization algorithm that minimizes loss.
+
+Formula:
+
+New Weight =
+Old Weight - Learning Rate × Gradient
+
+w = w - η∇L
+
+Where:
+
+w = weight
+η = learning rate
+L = loss
+
+Simple Explanation:
+Walk downhill until reaching bottom.
+
+AI/ML Use:
+Most important optimization method.
+
+VERY IMPORTANT ⭐⭐⭐⭐⭐
+
+---------------------------------------------------------
+
+15. CONVEX vs NON-CONVEX FUNCTIONS
+---------------------------------------------------------
+
+CONVEX FUNCTION
+
+Definition:
+Only one global minimum.
+
+Example:
+f(x)=x²
+
+Shape:
+Bowl-shaped
+
+Advantage:
+Easy optimization.
+
+--------------------------------
+
+NON-CONVEX FUNCTION
+
+Definition:
+Many local minima and maxima.
+
+Example:
+f(x)=sin(x)
+
+Shape:
+Many hills and valleys.
+
+AI/ML Use:
+Deep Learning loss functions.
+
+---------------------------------------------------------
+
+16. LAGRANGE MULTIPLIERS
+---------------------------------------------------------
+
+Definition:
+Optimization with constraints.
+
+Example:
+
+Maximize:
+f(x,y)=xy
+
+Constraint:
+x+y=10
+
+Simple Explanation:
+Find best solution while following rules.
+
+AI/ML Use:
+Support Vector Machines (SVMs)
+and constrained optimization.
+
+=========================================================
+MOST IMPORTANT FOR AI/ML
+=========================================================
+
+1. Differentiation ⭐⭐⭐⭐⭐
+2. Partial Derivatives ⭐⭐⭐⭐⭐
+3. Chain Rule ⭐⭐⭐⭐⭐
+4. Gradient ⭐⭐⭐⭐⭐
+5. Gradient Descent ⭐⭐⭐⭐⭐
+6. Optimization ⭐⭐⭐⭐⭐
+7. Jacobian Matrix ⭐⭐⭐⭐
+8. Hessian Matrix ⭐⭐⭐⭐
+9. Convex Functions ⭐⭐⭐⭐
+10. Lagrange Multipliers ⭐⭐⭐
+
+=========================================================
+ONE-LINE REVISION
+=========================================================
+
+Limit               → Value a function approaches
+Continuity          → No breaks in graph
+Derivative          → Rate of change
+Partial Derivative  → Change w.r.t one variable
+Chain Rule          → Derivative of nested functions
+Gradient            → Direction of steepest increase
+Jacobian            → Matrix of first derivatives
+Hessian             → Matrix of second derivatives
+Taylor Series       → Polynomial approximation
+Integration         → Area under curve
+Optimization        → Finding best value
+Gradient Descent    → Minimizing loss
+Convex Function     → One global minimum
+Non-Convex Function → Many local minima
+Lagrange Multiplier → Optimization with constraints
+
+=========================================================
+AI/ML CALCULUS ROADMAP
+=========================================================
+
+Limits
+  ↓
+Continuity
+  ↓
+Differentiation
+  ↓
+Partial Derivatives
+  ↓
+Multivariable Calculus
+  ↓
+Chain Rule
+  ↓
+Gradient
+  ↓
+Jacobian
+  ↓
+Hessian
+  ↓
+Taylor Series
+  ↓
+Optimization
+  ↓
+Gradient Descent
+  ↓
+Convex Optimization
+  ↓
+Lagrange Multipliers
+
+=========================================================
+END OF CALCULUS FOR AI/ML CHEAT SHEET
+=========================================================

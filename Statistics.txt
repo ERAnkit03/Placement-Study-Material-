@@ -1,0 +1,492 @@
+=================================================
+STATISTICS CHEAT SHEET
+=================================================
+
+1. DESCRIPTIVE STATISTICS
+Definition:
+Summarizes and describes data.
+
+Example:
+Average marks = 75
+
+AI/ML:
+Used to understand datasets before training.
+
+-------------------------------------------------
+
+2. INFERENTIAL STATISTICS
+Definition:
+Uses sample data to make conclusions about a population.
+
+Example:
+Survey 500 users to estimate behavior of 50,000 users.
+
+AI/ML:
+Used in model evaluation and experiments.
+
+-------------------------------------------------
+
+3. MEAN
+Definition:
+Average of all values.
+
+Formula:
+Mean = Sum of Values / Number of Values
+
+Example:
+(10+20+30)/3 = 20
+
+AI/ML:
+Feature analysis and normalization.
+
+-------------------------------------------------
+
+4. MEDIAN
+Definition:
+Middle value after sorting.
+
+Example:
+10,20,30,40,50 → 30
+
+AI/ML:
+Useful when outliers exist.
+
+-------------------------------------------------
+
+5. MODE
+Definition:
+Most frequently occurring value.
+
+Example:
+10,20,20,30 → 20
+
+AI/ML:
+Useful for categorical data.
+
+-------------------------------------------------
+
+6. RANGE
+Definition:
+Difference between maximum and minimum values.
+
+Example:
+100 - 60 = 40
+
+AI/ML:
+Quick spread measurement.
+
+-------------------------------------------------
+
+7. VARIANCE
+Definition:
+Average squared distance from mean.
+
+Example:
+High variance = widely spread data.
+
+AI/ML:
+Measures variability.
+
+-------------------------------------------------
+
+8. STANDARD DEVIATION
+Definition:
+Square root of variance.
+
+Example:
+SD = 3
+
+AI/ML:
+Used in normalization and anomaly detection.
+
+-------------------------------------------------
+
+9. POPULATION
+Definition:
+Entire group under study.
+
+Example:
+All students in a college.
+
+-------------------------------------------------
+
+10. SAMPLE
+Definition:
+Subset of population.
+
+Example:
+500 students selected from college.
+
+-------------------------------------------------
+
+11. PROBABILITY
+Definition:
+Chance of an event occurring.
+
+Example:
+P(Head) = 0.5
+
+AI/ML:
+Foundation of ML algorithms.
+
+-------------------------------------------------
+
+12. RANDOM VARIABLE
+Definition:
+Variable whose value depends on random outcomes.
+
+Example:
+Number on a dice roll.
+
+-------------------------------------------------
+
+13. CONDITIONAL PROBABILITY
+Definition:
+Probability of A given B.
+
+Example:
+P(Rain | Clouds)
+
+AI/ML:
+Recommendation systems and Bayesian models.
+
+-------------------------------------------------
+
+14. BAYES THEOREM
+Definition:
+Updates probability using new evidence.
+
+Example:
+Spam email detection.
+
+AI/ML:
+Naive Bayes classifier.
+
+-------------------------------------------------
+
+15. EXPECTATION
+Definition:
+Long-term average value.
+
+Example:
+Expected value of fair dice = 3.5
+
+AI/ML:
+Expected reward in Reinforcement Learning.
+
+-------------------------------------------------
+
+16. COVARIANCE
+Definition:
+Measures direction of relationship.
+
+Example:
+Positive covariance = move together.
+
+AI/ML:
+Used in PCA.
+
+-------------------------------------------------
+
+17. CORRELATION
+Definition:
+Measures strength and direction of relationship.
+
+Range:
+-1 to +1
+
+Example:
+Study Hours ↑ → Marks ↑
+
+AI/ML:
+Feature selection.
+
+-------------------------------------------------
+
+18. CORRELATION VS CAUSATION
+
+Correlation:
+Variables move together.
+
+Causation:
+One variable causes another.
+
+Important:
+Correlation does NOT imply causation.
+
+-------------------------------------------------
+
+19. NORMAL DISTRIBUTION
+Definition:
+Bell-shaped distribution.
+
+Example:
+Human heights.
+
+AI/ML:
+Many algorithms assume normality.
+
+-------------------------------------------------
+
+20. Z-SCORE
+Definition:
+Distance from mean measured in standard deviations.
+
+Example:
+z = 2
+
+AI/ML:
+Outlier detection.
+
+-------------------------------------------------
+
+21. SAMPLING
+Definition:
+Selecting subset from population.
+
+AI/ML:
+Train-test data creation.
+
+-------------------------------------------------
+
+22. SIMPLE RANDOM SAMPLING
+Definition:
+Every member has equal chance.
+
+Example:
+Lottery selection.
+
+-------------------------------------------------
+
+23. STRATIFIED SAMPLING
+Definition:
+Maintain class proportions.
+
+Example:
+80% Cats, 20% Dogs.
+
+AI/ML:
+Recommended for train-test split.
+
+-------------------------------------------------
+
+24. HYPOTHESIS TESTING
+Definition:
+Tests claims using sample data.
+
+Example:
+Is Model B better than Model A?
+
+-------------------------------------------------
+
+25. NULL HYPOTHESIS (H0)
+Definition:
+Default assumption.
+
+Example:
+New model is not better.
+
+-------------------------------------------------
+
+26. ALTERNATIVE HYPOTHESIS (H1)
+Definition:
+Claim being tested.
+
+Example:
+New model is better.
+
+-------------------------------------------------
+
+27. P-VALUE
+Definition:
+Evidence against H0.
+
+Rule:
+p < 0.05 → Significant
+
+AI/ML:
+Model comparison.
+
+-------------------------------------------------
+
+28. CONFIDENCE INTERVAL
+Definition:
+Likely range containing true value.
+
+Example:
+95% CI = (48,52)
+
+AI/ML:
+Reliability estimation.
+
+-------------------------------------------------
+
+29. ANOVA
+Definition:
+Compares means of 3 or more groups.
+
+Example:
+Compare 3 ML models.
+
+AI/ML:
+Model evaluation.
+
+-------------------------------------------------
+
+30. REGRESSION ANALYSIS
+Definition:
+Predicts continuous values.
+
+Example:
+House Price Prediction.
+
+AI/ML:
+Supervised learning.
+
+-------------------------------------------------
+
+31. LINEAR REGRESSION
+Definition:
+Fits a straight line.
+
+Equation:
+y = mx + b
+
+Example:
+Predict salary from experience.
+
+-------------------------------------------------
+
+32. A/B TESTING
+Definition:
+Compare two versions.
+
+Example:
+Button A vs Button B.
+
+AI/ML:
+Product optimization.
+
+-------------------------------------------------
+
+33. MAXIMUM LIKELIHOOD ESTIMATION (MLE)
+Definition:
+Find parameters that make observed data most likely.
+
+Example:
+7 heads in 10 tosses → p = 0.7
+
+AI/ML:
+Used in Logistic Regression, Naive Bayes.
+
+-------------------------------------------------
+
+34. BIAS
+Definition:
+Error from oversimplification.
+
+Result:
+Underfitting.
+
+-------------------------------------------------
+
+35. VARIANCE
+Definition:
+Error from over-sensitivity to data.
+
+Result:
+Overfitting.
+
+-------------------------------------------------
+
+36. BIAS-VARIANCE TRADEOFF
+Definition:
+Balance simplicity and complexity.
+
+Goal:
+Best generalization.
+
+-------------------------------------------------
+
+37. OUTLIERS
+Definition:
+Extreme values far from others.
+
+Example:
+10,12,15,200
+
+AI/ML:
+Can distort models.
+
+-------------------------------------------------
+
+38. LAW OF LARGE NUMBERS
+Definition:
+More observations → estimate gets closer to true value.
+
+Example:
+Coin toss probability stabilizes.
+
+-------------------------------------------------
+
+39. CENTRAL LIMIT THEOREM
+Definition:
+Sample means tend toward normal distribution.
+
+AI/ML:
+Foundation of statistical inference.
+
+-------------------------------------------------
+
+40. LIKELIHOOD VS PROBABILITY
+
+Probability:
+Parameter → Data
+
+Likelihood:
+Data → Parameter
+
+Example:
+MLE uses likelihood.
+
+-------------------------------------------------
+
+41. FEATURE SCALING
+Definition:
+Bring features to similar scale.
+
+Methods:
+- Standardization
+- Min-Max Scaling
+
+AI/ML:
+Improves model training.
+
+-------------------------------------------------
+
+42. MOST IMPORTANT STATISTICS TOPICS FOR AI/ML
+
+1. Probability
+2. Conditional Probability
+3. Bayes Theorem
+4. Random Variables
+5. Probability Distributions
+6. Expectation
+7. Variance
+8. Standard Deviation
+9. Correlation
+10. Covariance
+11. Sampling
+12. Hypothesis Testing
+13. P-Value
+14. Confidence Intervals
+15. Regression
+16. MLE
+17. Bias-Variance Tradeoff
+18. Central Limit Theorem
+19. A/B Testing
+20. Outlier Detection
+
+=================================================
+END OF AIML STATISTICS CHEAT SHEET
+=================================================

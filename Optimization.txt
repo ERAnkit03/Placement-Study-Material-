@@ -1,0 +1,234 @@
+=================================================
+        OPTIMIZATION IN MACHINE LEARNING
+                QUICK CHEAT SHEET
+=================================================
+
+7.1 COST FUNCTION
+-------------------------------------------------
+Definition:
+Measures total error of the model.
+
+Formula:
+J(θ) = (1/m) Σ(y - ŷ)²
+
+Key Point:
+Lower cost = Better model
+
+Example:
+Actual = 100
+Predicted = 90
+Error = 10
+Cost = 10² = 100
+
+-------------------------------------------------
+
+7.2 LOSS FUNCTION
+-------------------------------------------------
+Definition:
+Measures error for one training sample.
+
+Key Point:
+Loss = Single sample error
+Cost = Average loss of all samples
+
+Example:
+Actual = 50
+Predicted = 45
+Loss = (50 - 45)² = 25
+
+-------------------------------------------------
+
+7.3 CONVEX OPTIMIZATION
+-------------------------------------------------
+Definition:
+Optimization of a convex (bowl-shaped) function.
+
+Key Point:
+Local Minimum = Global Minimum
+
+Example:
+f(x) = x²
+Minimum at x = 0
+
+-------------------------------------------------
+
+7.4 GRADIENT-BASED OPTIMIZATION
+-------------------------------------------------
+Definition:
+Uses gradient (slope) to minimize cost.
+
+Update Rule:
+θ = θ - η∇J(θ)
+
+Where:
+θ = Parameter
+η = Learning Rate
+∇J = Gradient
+
+Key Point:
+Move in the opposite direction of the gradient.
+
+-------------------------------------------------
+
+7.5 STOCHASTIC GRADIENT DESCENT (SGD)
+-------------------------------------------------
+Definition:
+Updates parameters using one sample at a time.
+
+Formula:
+θ = θ - η∇J(θ)
+
+Advantages:
+✓ Fast
+✓ Less memory
+
+Disadvantages:
+✗ Noisy updates
+✗ May oscillate
+
+Example:
+Update after every training example.
+
+-------------------------------------------------
+
+7.6 MOMENTUM
+-------------------------------------------------
+Definition:
+Adds velocity to gradient descent.
+
+Formula:
+v = βv - η∇J
+θ = θ + v
+
+Key Point:
+Like a ball rolling downhill.
+
+Advantages:
+✓ Faster convergence
+✓ Reduces zig-zag movement
+
+-------------------------------------------------
+
+7.7 RMSPROP
+-------------------------------------------------
+Definition:
+Adaptive learning rate optimizer.
+
+Formula:
+Sₜ = βSₜ₋₁ + (1-β)g²
+θ = θ - ηg/√(Sₜ+ε)
+
+Key Point:
+Large gradients → Smaller step
+Small gradients → Larger step
+
+Advantages:
+✓ Stable learning
+✓ Good for deep networks
+
+-------------------------------------------------
+
+7.8 ADAM OPTIMIZER
+-------------------------------------------------
+Definition:
+Combination of Momentum + RMSProp.
+
+Formula:
+θ = θ - η(m̂/√(v̂)+ε)
+
+Key Point:
+Most popular optimizer.
+
+Advantages:
+✓ Fast
+✓ Stable
+✓ Requires little tuning
+
+-------------------------------------------------
+
+7.9 LEARNING RATE SCHEDULING
+-------------------------------------------------
+Definition:
+Changes learning rate during training.
+
+Example:
+0.1 → 0.01 → 0.001
+
+Benefits:
+✓ Faster training
+✓ Better accuracy
+
+Key Point:
+Large steps first, small steps later.
+
+-------------------------------------------------
+
+7.10 REGULARIZATION
+-------------------------------------------------
+Definition:
+Prevents overfitting by adding penalty.
+
+L1 Regularization:
+J + λΣ|w|
+
+L2 Regularization:
+J + λΣw²
+
+Key Point:
+Keeps model simple.
+
+Benefits:
+✓ Reduces overfitting
+✓ Improves generalization
+
+-------------------------------------------------
+
+7.11 SECOND-ORDER OPTIMIZATION
+-------------------------------------------------
+Definition:
+Uses gradient and Hessian matrix.
+
+Newton's Method:
+θ = θ - H⁻¹∇J
+
+Where:
+H = Hessian Matrix
+
+Advantages:
+✓ Very fast convergence
+
+Disadvantages:
+✗ Computationally expensive
+
+-------------------------------------------------
+
+QUICK COMPARISON
+-------------------------------------------------
+
+Gradient Descent  → Full dataset updates
+SGD               → One sample updates
+Momentum          → Adds velocity
+RMSProp           → Adaptive learning rate
+Adam              → Momentum + RMSProp
+LR Scheduling     → Changes learning rate
+Regularization    → Prevents overfitting
+Second-Order Opt. → Uses Hessian matrix
+
+-------------------------------------------------
+
+1-MARK REVISION
+-------------------------------------------------
+
+Cost Function      → Total error
+Loss Function      → Single sample error
+Convex Optimization→ One global minimum
+Gradient Method    → Uses slope
+SGD                → One sample update
+Momentum           → Adds speed
+RMSProp            → Adaptive learning rate
+Adam               → Momentum + RMSProp
+LR Scheduling      → Dynamic learning rate
+Regularization     → Prevents overfitting
+Second-Order Opt.  → Uses Hessian matrix
+
+=================================================
